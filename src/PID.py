@@ -10,7 +10,6 @@ class PID:
         self.lastError = None
         self.sum = 0
 
-
     def update(self, error):
         if(self.lastTime == None): 
             self.lastError = error
