@@ -1,6 +1,10 @@
 from pyb import Pin, Timer, USB_VCP, ADC
 import task_share
 import cotask
+
+import PID
+import Motor
+import Encoder
 class MotorEncoder():
     def __init__(self, side, vbat):
 

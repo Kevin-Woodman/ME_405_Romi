@@ -1,26 +1,22 @@
 from imu import IMU
 import sensorArray
 import PID
-import Motor
-import Encoder
 from pyb import Pin, Timer, USB_VCP, ADC
 import task_share
 import cotask
+
 class controller:
     '''
     Controller is the top-level control loop.
-
     It uses data from whichever sensor is active in the current state to dictate a velocity setpoint to send each motor/encoder combination
-
     Controller shares line thickness information with Tracker to indicate specific waypoints on the track and supliment Tracker's encoder position tracking to maintain more consistent action.
     '''
 
     def __init__(self):
-
         # IMU Configuration
         i2c = pyb.I2C(1, mode=pyb.I2C.CONTROLLER)
         self.imu = IMU(i2c)
-        self.imu.changeMode("CONFIGMODE") #Give IMU time to change mode
+        self.imu.changeMode("CONFIGMODE") # Give IMU time to change mode
 
         # Line Sensor Configuration
         sensorPins = [Pin.board.PB1, Pin.board.PC5, Pin.board.PC0, Pin.board.PA0, Pin.board.PC1, Pin.board.PC4, None, Pin.board.PA7, Pin.board.PA4, Pin.board.PA6, Pin.board.PA1,Pin.board.PC2,Pin.board.PC3]
@@ -242,16 +238,6 @@ class controller:
         elif (self.state == self.S2_SENSE):
             self.heading = self.imu.readEuler()[0]
             self.state = self.S1_CONTROL
-
-
-    def _SC4(self):
-        '''
-        Section 4
-
-        Control/Sense Loop for...
-        '''
-        pass
-
 
     def task(self, shares):
 

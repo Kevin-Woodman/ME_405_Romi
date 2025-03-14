@@ -2,11 +2,8 @@ from pyb import Pin, Timer
 class Tracker:
     '''
     Tracker takes wheel angular position shares from the R/L motor tasks and calculates the relative position of Romi's center.
-
     This information is used to communicate to the controller task what "section" of the track Romi is in so that specific controlling can be performed.
-
     Tracker also recieves information from the controller task that helps indicate specific landmarks on the track and reset the encoders so that more accurate tracking is conducted.
-
     Additionally, Tracker controls the servo motion directly in the task.
     '''
 
@@ -23,7 +20,6 @@ class Tracker:
     def _S0(self):
         '''
         Initialization state.
-
         Sets the servo to upright position and resets the encoders
         '''
 
@@ -36,7 +32,6 @@ class Tracker:
     def _S1(self):
         '''
         First section of the track up until the diamond.
-
         Uses Encoder reading to swing servo and get the first cup.
         '''
         if(self.sectionShare.get() == -1):
