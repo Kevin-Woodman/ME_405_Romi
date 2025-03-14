@@ -4,8 +4,7 @@
  
 from pyb import ADC
 
-## Implements multitasking with scheduling and some performance logging.
-
+## Implements Lightsensor behavior
 # This class implements behavior for each individual IR reflectance sesnor. Reading the sensor value and reconfigureing it
 # to allow for normalization of the output.
 # @b Example:

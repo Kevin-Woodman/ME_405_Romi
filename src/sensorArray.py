@@ -1,3 +1,6 @@
+## @file sensroArray.py
+# This file contains the driver for an entire IR reflectance sensor array
+
 import lightSensor
 import pyb
 
@@ -16,7 +19,6 @@ class sensorArray:
         
     
     def configAll(self, whiteList = None, blackList = None):
-
         whiteLevels = []
         blackLevels = []
 
@@ -41,37 +43,30 @@ class sensorArray:
         centroid = 0
         sumVal = 0
 
-        # FOR PRINTING CENTROID VISUALIZE
-        # readings = ["|" * int(sensor.read() * 20) for sensor in self.sensors]
-        
-        # print("\x1B\x5B2J", end="")
-        # print("\x1B\x5BH", end="")
-        # for i, read in enumerate(readings):
-        #     print (i, read)
-
         for i, sensor in enumerate(self.sensors):
             if not sensor: continue
             val = sensor.read()
             sumVal += val
             centroid += (i + 1)*val
 
-        # FOR PRINTING
-        # print(f"Centroid: {centroid}, Sum: {sumVal}") 
 
         thickness = 1
-        if(sumVal <= 1.0): #Too few reading to tell
+        if(sumVal <= 1.0): # Too faint reading to reliably get centroid
             return -1, 0
-        elif(sumVal >= 6.5):
+        elif(sumVal >= 6.5): # Thick line
             thickness = 2
 
         centroid /= sumVal
-        
         return centroid, thickness
 
+    ## Enable IR emmiters
+    # Enables all the IR emmiters to full power
     def enable(self):
         for pin in self.lights:
             pin.high()
 
+    ## Disable IR emmiters
+    # Disables all the IR emmiters
     def disable(self):
         for pin in self.lights:
             pin.low()
