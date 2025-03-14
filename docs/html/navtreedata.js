@@ -43,7 +43,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"_motor_8py.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

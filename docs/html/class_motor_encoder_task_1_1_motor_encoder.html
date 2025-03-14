@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Mecha_15 (Zippy): sensorArray.sensorArray Class Reference</title>
+<title>Mecha_15 (Zippy): MotorEncoderTask.MotorEncoder Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,7 +76,7 @@ $(function() { codefold.init(0); });
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('classsensor_array_1_1sensor_array.html',''); initResizable(true); });
+$(function(){initNavTree('class_motor_encoder_task_1_1_motor_encoder.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -105,49 +105,53 @@ $(function(){initNavTree('classsensor_array_1_1sensor_array.html',''); initResiz
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="classsensor_array_1_1sensor_array-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">sensorArray.sensorArray Class Reference</div></div>
+<a href="class_motor_encoder_task_1_1_motor_encoder-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">MotorEncoderTask.MotorEncoder Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae9b7abf138858e7fdad6bd2c2dbed312" id="r_ae9b7abf138858e7fdad6bd2c2dbed312"><td class="memItemLeft" align="right" valign="top"><a id="ae9b7abf138858e7fdad6bd2c2dbed312" name="ae9b7abf138858e7fdad6bd2c2dbed312"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b> (self, sensorPins, lightPins)</td></tr>
-<tr class="separator:ae9b7abf138858e7fdad6bd2c2dbed312"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e8e099bda2052d85ea4c12ab7f03bd8" id="r_a0e8e099bda2052d85ea4c12ab7f03bd8"><td class="memItemLeft" align="right" valign="top"><a id="a0e8e099bda2052d85ea4c12ab7f03bd8" name="a0e8e099bda2052d85ea4c12ab7f03bd8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>configAll</b> (self, whiteList=None, blackList=None)</td></tr>
-<tr class="separator:a0e8e099bda2052d85ea4c12ab7f03bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fb37acce3e5f2e1f544527eadbb7843" id="r_a6fb37acce3e5f2e1f544527eadbb7843"><td class="memItemLeft" align="right" valign="top"><a id="a6fb37acce3e5f2e1f544527eadbb7843" name="a6fb37acce3e5f2e1f544527eadbb7843"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>getCentroid</b> (self)</td></tr>
-<tr class="separator:a6fb37acce3e5f2e1f544527eadbb7843"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ea9e78a517536fab593b761d20880b8" id="r_a0ea9e78a517536fab593b761d20880b8"><td class="memItemLeft" align="right" valign="top"><a id="a0ea9e78a517536fab593b761d20880b8" name="a0ea9e78a517536fab593b761d20880b8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>enable</b> (self)</td></tr>
-<tr class="memdesc:a0ea9e78a517536fab593b761d20880b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable IR emmiters Enables all the IR emmiters to full power. <br /></td></tr>
-<tr class="separator:a0ea9e78a517536fab593b761d20880b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa373d291f9b330a9788b33af02bc77f5" id="r_aa373d291f9b330a9788b33af02bc77f5"><td class="memItemLeft" align="right" valign="top"><a id="aa373d291f9b330a9788b33af02bc77f5" name="aa373d291f9b330a9788b33af02bc77f5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>disable</b> (self)</td></tr>
-<tr class="memdesc:aa373d291f9b330a9788b33af02bc77f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable IR emmiters Disables all the IR emmiters. <br /></td></tr>
-<tr class="separator:aa373d291f9b330a9788b33af02bc77f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7a30ed9416445223511db3840e05874" id="r_ae7a30ed9416445223511db3840e05874"><td class="memItemLeft" align="right" valign="top"><a id="ae7a30ed9416445223511db3840e05874" name="ae7a30ed9416445223511db3840e05874"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b> (self, side, vbat)</td></tr>
+<tr class="separator:ae7a30ed9416445223511db3840e05874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb15e1c948fc972b95dcb391b7631f59" id="r_aeb15e1c948fc972b95dcb391b7631f59"><td class="memItemLeft" align="right" valign="top"><a id="aeb15e1c948fc972b95dcb391b7631f59" name="aeb15e1c948fc972b95dcb391b7631f59"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>task</b> (self, shares)</td></tr>
+<tr class="separator:aeb15e1c948fc972b95dcb391b7631f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a988a5b0e54bf8cfc3d34b4825c83e98d" id="r_a988a5b0e54bf8cfc3d34b4825c83e98d"><td class="memItemLeft" align="right" valign="top"><a id="a988a5b0e54bf8cfc3d34b4825c83e98d" name="a988a5b0e54bf8cfc3d34b4825c83e98d"></a>
-list&#160;</td><td class="memItemRight" valign="bottom"><b>sensors</b> = []</td></tr>
-<tr class="separator:a988a5b0e54bf8cfc3d34b4825c83e98d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0bd7d4142efd2477f789be1b7060cd7" id="r_ac0bd7d4142efd2477f789be1b7060cd7"><td class="memItemLeft" align="right" valign="top"><a id="ac0bd7d4142efd2477f789be1b7060cd7" name="ac0bd7d4142efd2477f789be1b7060cd7"></a>
-list&#160;</td><td class="memItemRight" valign="bottom"><b>lights</b> = [pyb.Pin(pin, pyb.Pin.OUT_PP) for pin in lightPins]</td></tr>
-<tr class="separator:ac0bd7d4142efd2477f789be1b7060cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09f0c7c5f8a5eeac1029ff86b99cd869" id="r_a09f0c7c5f8a5eeac1029ff86b99cd869"><td class="memItemLeft" align="right" valign="top"><a id="a09f0c7c5f8a5eeac1029ff86b99cd869" name="a09f0c7c5f8a5eeac1029ff86b99cd869"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>vbat</b> = vbat</td></tr>
+<tr class="separator:a09f0c7c5f8a5eeac1029ff86b99cd869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad87d091d21288d297449476fabd900de" id="r_ad87d091d21288d297449476fabd900de"><td class="memItemLeft" align="right" valign="top"><a id="ad87d091d21288d297449476fabd900de" name="ad87d091d21288d297449476fabd900de"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>motor</b> = <a class="el" href="class_motor_1_1_motor.html">Motor.Motor</a>((tm2, 1, Pin.board.PA15), Pin.board.PH0, Pin.board.PH1)</td></tr>
+<tr class="separator:ad87d091d21288d297449476fabd900de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63fc26d7272e61d71b1ca7208ca2f479" id="r_a63fc26d7272e61d71b1ca7208ca2f479"><td class="memItemLeft" align="right" valign="top"><a id="a63fc26d7272e61d71b1ca7208ca2f479" name="a63fc26d7272e61d71b1ca7208ca2f479"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>encoder</b> = <a class="el" href="class_encoder_1_1_encoder.html">Encoder.Encoder</a>(1, Pin.board.PA8, Pin.board.PA9)</td></tr>
+<tr class="separator:a63fc26d7272e61d71b1ca7208ca2f479"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a051dc2aaa752b8f0a122d3e6eec9ceb4" id="r_a051dc2aaa752b8f0a122d3e6eec9ceb4"><td class="memItemLeft" align="right" valign="top"><a id="a051dc2aaa752b8f0a122d3e6eec9ceb4" name="a051dc2aaa752b8f0a122d3e6eec9ceb4"></a>
+str&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> = &quot;Right&quot;</td></tr>
+<tr class="separator:a051dc2aaa752b8f0a122d3e6eec9ceb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6b3da5f821edf82580086d67929487b" id="r_af6b3da5f821edf82580086d67929487b"><td class="memItemLeft" align="right" valign="top"><a id="af6b3da5f821edf82580086d67929487b" name="af6b3da5f821edf82580086d67929487b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>vel2volt</b> = lambda vel: ((vel / 5.57) + 2.1 * (-1 if vel &lt; 0 else 1))</td></tr>
+<tr class="separator:af6b3da5f821edf82580086d67929487b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac89b37b4e6c52e4c8456831b428a6c54" id="r_ac89b37b4e6c52e4c8456831b428a6c54"><td class="memItemLeft" align="right" valign="top"><a id="ac89b37b4e6c52e4c8456831b428a6c54" name="ac89b37b4e6c52e4c8456831b428a6c54"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>pid</b> = <a class="el" href="class_p_i_d_1_1_p_i_d.html">PID.PID</a>(Kp_m, Ki_m, Kd_m)</td></tr>
+<tr class="separator:ac89b37b4e6c52e4c8456831b428a6c54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72d59c538053bb4f53c1c3b2b0846656" id="r_a72d59c538053bb4f53c1c3b2b0846656"><td class="memItemLeft" align="right" valign="top"><a id="a72d59c538053bb4f53c1c3b2b0846656" name="a72d59c538053bb4f53c1c3b2b0846656"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> = 0</td></tr>
+<tr class="separator:a72d59c538053bb4f53c1c3b2b0846656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/kevin/ME405/ME_405_Romi/src/<b>sensorArray.py</b></li>
+<li>/Users/kevin/ME405/ME_405_Romi/src/<b>MotorEncoderTask.py</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>sensorArray</b></li><li class="navelem"><a class="el" href="classsensor_array_1_1sensor_array.html">sensorArray</a></li>
+    <li class="navelem"><b>MotorEncoderTask</b></li><li class="navelem"><a class="el" href="class_motor_encoder_task_1_1_motor_encoder.html">MotorEncoder</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

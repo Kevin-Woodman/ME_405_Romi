@@ -4,7 +4,7 @@
  
 from pyb import ADC
 
-## Implements Lightsensor behavior
+## Implements Light sensor behavior
 # This class implements behavior for each individual IR reflectance sesnor. Reading the sensor value and reconfigureing it
 # to allow for normalization of the output.
 # @b Example:
