@@ -10,7 +10,7 @@ var annotated_dup =
     [ "imu", null, [
       [ "IMU", "classimu_1_1_i_m_u.html", null ]
     ] ],
-    [ "lightSensor", "namespacelight_sensor.html", [
+    [ "lightSensor", null, [
       [ "lightSensor", "classlight_sensor_1_1light_sensor.html", "classlight_sensor_1_1light_sensor" ]
     ] ],
     [ "main", null, [
@@ -20,6 +20,9 @@ var annotated_dup =
     ] ],
     [ "Motor", null, [
       [ "Motor", "class_motor_1_1_motor.html", "class_motor_1_1_motor" ]
+    ] ],
+    [ "PID", null, [
+      [ "PID", "class_p_i_d_1_1_p_i_d.html", null ]
     ] ],
     [ "sensorArray", null, [
       [ "sensorArray", "classsensor_array_1_1sensor_array.html", null ]

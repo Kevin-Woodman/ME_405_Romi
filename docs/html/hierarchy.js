@@ -10,6 +10,7 @@ var hierarchy =
     [ "lightSensor.lightSensor", "classlight_sensor_1_1light_sensor.html", null ],
     [ "Motor.Motor", "class_motor_1_1_motor.html", null ],
     [ "main.MotorEncoder", "classmain_1_1_motor_encoder.html", null ],
+    [ "PID.PID", "class_p_i_d_1_1_p_i_d.html", null ],
     [ "sensorArray.sensorArray", "classsensor_array_1_1sensor_array.html", null ],
     [ "cotask.Task", "classcotask_1_1_task.html", null ],
     [ "cotask.TaskList", "classcotask_1_1_task_list.html", null ],
