@@ -1,5 +1,6 @@
 ## @file Controller.py
-# This file contains the class responsible for controlling Romi's top level motor control based on line sensor and IMU readings
+# This file contains the class responsible for controlling Romi's top level motor control based on line sensor and
+# IMU readings and communication from the Tracker task.
 
 from imu import IMU
 import sensorArray

@@ -1,41 +1,43 @@
-## @file Motor.py
+## @file Tracker.py
+# This file contains the class responsible for controlling Romi's top level track position tracker switching based on
+# encoder readings and communication from the Controller task.
 
 from pyb import Pin, Timer
-class Tracker:
-    '''
-    Tracker takes wheel angular position shares from the R/L motor tasks and calculates the relative position of Romi's center.
-    This information is used to communicate to the controller task what "section" of the track Romi is in so that specific controlling can be performed.
-    Tracker also recieves information from the controller task that helps indicate specific landmarks on the track and reset the encoders so that more accurate tracking is conducted.
-    Additionally, Tracker controls the servo motion directly in the task.
-    '''
 
+## Tracker is a top level track position tracker
+# Tracker takes wheel angular position shares from the R/L motor tasks and calculates the relative position of Romi's
+# center. This information is used to communicate to the controller task what "section" of the track Romi is in so that
+# specific controlling can be performed. Tracker also recieves information from the controller task that helps
+# indicate specific landmarks on the track and reset the encoders so that more accurate tracking is conducted.
+# Additionally, Tracker controls the servo motion directly in the task.
+class Tracker:
+
+
+    ## Initializes a Tracker object.
+    # This function initializes a controller object which involves:
+    # * Initializing a PWM timer object to control the servo
     def __init__(self):
         # Servo Configuration
-        '''
-        Pulse width 10000 = 90deg = up
-        Pulse width 14500 = 180deg = down
-        '''
+
+        # Pulse width 10000 = 90deg = up
+        # Pulse width 14500 = 180deg = down
         tim4 = Timer(4, freq=300) # Tim freq of 300Hz corresponds to 3333us period.
         self.servo = tim4.channel(2, pin = Pin.board.PB7, mode = Timer.PWM, pulse_width = 10000)
 
 
+    ## Initialization state.
+    # Sets the servo to upright position and resets the encoders
     def _S0(self):
-        '''
-        Initialization state.
-        Sets the servo to upright position and resets the encoders
-        '''
-
         self.servo.pulse_width(10000)
         self.resetR.put(1)
         self.resetL.put(1)
         self.state = self.S1_START
         self.sectionShare.put(1)
 
+    ## First section of the track up until the diamond.
+    # Uses Encoder reading to swing servo and get the first cup. Switches to _S2 after receiving a thick line
+    # from the Controller task.
     def _S1(self):
-        '''
-        First section of the track up until the diamond.
-        Uses Encoder reading to swing servo and get the first cup.
-        '''
         if(self.sectionShare.get() == -1):
             self.resetR.put(1)
             self.resetL.put(1)
@@ -46,7 +48,6 @@ class Tracker:
         rPos = self.posR.get()
         lPos = self.posL.get()
         avg = (rPos + lPos) / 2
-        #print("L:", lPos, "R:", rPos, "Avg:", avg)
 
         # Controlling Servo
         if avg >= 100_000: pass
@@ -55,16 +56,12 @@ class Tracker:
         elif avg >= 500:
             self.servo.pulse_width(14500)
 
+    ## Section from the Diamond-onward state until the IMU section.
+    # - Sends section change to controller after Diamond Ticks.
+    # - Deploys servo after certain ticks.
+    # - Undeploy servo after certain ticks.
+    # - Switches to _S3 after specific ticks and a thick line from the Controller task.
     def _S2(self):
-        '''
-        Diamond-onward state.
-
-        - Resets encoder ticks.
-        - Sends section change to controller after Diamond Ticks
-        - Deploys arm after certain ticks
-            - Undeploy
-        '''
-
         if(self.sectionShare.get() == -2):
             self.resetR.put(1)
             self.resetL.put(1)
@@ -88,15 +85,10 @@ class Tracker:
             pass
 
 
+    ## IMU section up until the wall.
+    # - Count until first IMU turn
+    # - Switches to _S4 after the Controller sends a bump.
     def _S3(self):
-        '''
-        IMU state.
-
-        - Reset encoder ticks
-        - Count until turn
-            - Send flag to control after turn
-        '''
-
         if(self.sectionShare.get() == -3):
             self.resetR.put(1)
             self.resetL.put(1)
@@ -111,13 +103,10 @@ class Tracker:
         elif avg >= 4_475:
             self.sectionShare.put(4)
 
-
+    ## Finish state.
+    # - Counts distance until each turn
+    # - After 3 turns and distance disables Romi.
     def _S4(self):
-        '''
-        Finish State
-
-        - sequence of finishing IMU moves to get to Line
-        '''
         rPos =  4294967295 - self.posR.get()
         lPos =  4294967295 - self.posL.get()
 
@@ -136,16 +125,11 @@ class Tracker:
         elif avg >= 1_500:
             self.sectionShare.put(6)
 
-    def _S5(self):
-        pass
-
-
+    ## Defines the task for Controller.
+    # This generator function defines the task for the tracker, is starts in an Initialization state before before
+    # switching into state 1.
+    # @param shares A tuple of shares (enable, sectionShare, posL, posR, resetL, resetR)
     def task(self, shares):
-        '''
-        Task is the main function that is called by the scehduler.
-
-        Task unpacks shares and declares them as class parameters, declares the states and then simply checks the state and calls the corresponds state function.
-        '''
 
         # Unpacking Shares
         self.enable, self.sectionShare, self.posL, self.posR, self.resetL, self.resetR = shares
@@ -156,13 +140,12 @@ class Tracker:
         self.S2_POST_DIAMOND = 2
         self.S3_IMU = 3
         self.S4_WALL = 4
-        self.S5_FINISH = 5
 
         self.state = self.S0_INIT
 
         # Task FSM Loop
         while True:
-            if(self.enable.get() == 0 and not (self.state == self.S4_WALL or self.state == self.S3_IMU or self.state == self.S5_FINISH)):
+            if(self.enable.get() == 0 and not (self.state == self.S4_WALL or self.state == self.S3_IMU)):
                 self._S0()
 
             if(self.state == self.S1_START):
@@ -176,8 +159,5 @@ class Tracker:
 
             elif (self.state == self.S4_WALL):
                 self._S4()
-
-            elif (self.state == self.S5_FINISH):
-                self._S5()
 
             yield self.state

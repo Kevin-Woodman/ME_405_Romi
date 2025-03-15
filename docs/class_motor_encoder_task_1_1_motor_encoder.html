@@ -109,14 +109,17 @@ $(function(){initNavTree('class_motor_encoder_task_1_1_motor_encoder.html',''); 
   <div class="headertitle"><div class="title">MotorEncoderTask.MotorEncoder Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_motor_encoder_task_1_1_motor_encoder.html" title="MotorEncoder is the low-level control loop for Romi&#39;s motors.">MotorEncoder</a> is the low-level control loop for Romi's motors.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae7a30ed9416445223511db3840e05874" id="r_ae7a30ed9416445223511db3840e05874"><td class="memItemLeft" align="right" valign="top"><a id="ae7a30ed9416445223511db3840e05874" name="ae7a30ed9416445223511db3840e05874"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b> (self, side, vbat)</td></tr>
+<tr class="memitem:ae7a30ed9416445223511db3840e05874" id="r_ae7a30ed9416445223511db3840e05874"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7a30ed9416445223511db3840e05874">__init__</a> (self, side, vbat)</td></tr>
+<tr class="memdesc:ae7a30ed9416445223511db3840e05874"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="class_motor_encoder_task_1_1_motor_encoder.html" title="MotorEncoder is the low-level control loop for Romi&#39;s motors.">MotorEncoder</a> object.  <br /></td></tr>
 <tr class="separator:ae7a30ed9416445223511db3840e05874"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb15e1c948fc972b95dcb391b7631f59" id="r_aeb15e1c948fc972b95dcb391b7631f59"><td class="memItemLeft" align="right" valign="top"><a id="aeb15e1c948fc972b95dcb391b7631f59" name="aeb15e1c948fc972b95dcb391b7631f59"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>task</b> (self, shares)</td></tr>
+<tr class="memitem:aeb15e1c948fc972b95dcb391b7631f59" id="r_aeb15e1c948fc972b95dcb391b7631f59"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb15e1c948fc972b95dcb391b7631f59">task</a> (self, shares)</td></tr>
+<tr class="memdesc:aeb15e1c948fc972b95dcb391b7631f59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the task for <a class="el" href="class_motor_encoder_task_1_1_motor_encoder.html" title="MotorEncoder is the low-level control loop for Romi&#39;s motors.">MotorEncoder</a>.  <br /></td></tr>
 <tr class="separator:aeb15e1c948fc972b95dcb391b7631f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -135,6 +138,7 @@ str&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> = &quot;Right
 <tr class="separator:a051dc2aaa752b8f0a122d3e6eec9ceb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6b3da5f821edf82580086d67929487b" id="r_af6b3da5f821edf82580086d67929487b"><td class="memItemLeft" align="right" valign="top"><a id="af6b3da5f821edf82580086d67929487b" name="af6b3da5f821edf82580086d67929487b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>vel2volt</b> = lambda vel: ((vel / motorGain) + offset * (-1 if vel &lt; 0 else 1))</td></tr>
+<tr class="memdesc:af6b3da5f821edf82580086d67929487b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feedforward function. <br /></td></tr>
 <tr class="separator:af6b3da5f821edf82580086d67929487b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac89b37b4e6c52e4c8456831b428a6c54" id="r_ac89b37b4e6c52e4c8456831b428a6c54"><td class="memItemLeft" align="right" valign="top"><a id="ac89b37b4e6c52e4c8456831b428a6c54" name="ac89b37b4e6c52e4c8456831b428a6c54"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>pid</b> = <a class="el" href="class_p_i_d_1_1_p_i_d.html">PID.PID</a>(Kp_m, Ki_m, Kd_m)</td></tr>
@@ -143,6 +147,75 @@ str&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> = &quot;Right
 int&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> = 0</td></tr>
 <tr class="separator:a72d59c538053bb4f53c1c3b2b0846656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_motor_encoder_task_1_1_motor_encoder.html" title="MotorEncoder is the low-level control loop for Romi&#39;s motors.">MotorEncoder</a> is the low-level control loop for Romi's motors. </p>
+<p>This class contains an initialization function and a generator function to be used as a task. Each instance of this class represents either the left or right motor encoder pair. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae7a30ed9416445223511db3840e05874" name="ae7a30ed9416445223511db3840e05874"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7a30ed9416445223511db3840e05874">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MotorEncoderTask.MotorEncoder.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>side</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>vbat</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a <a class="el" href="class_motor_encoder_task_1_1_motor_encoder.html" title="MotorEncoder is the low-level control loop for Romi&#39;s motors.">MotorEncoder</a> object. </p>
+<p>This function initializes either a left or right <a class="el" href="class_motor_encoder_task_1_1_motor_encoder.html" title="MotorEncoder is the low-level control loop for Romi&#39;s motors.">MotorEncoder</a> object </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">side</td><td>either "R" or "L" to indicate which pair </td></tr>
+    <tr><td class="paramname">vbat</td><td>current battery voltage for effort caluclation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aeb15e1c948fc972b95dcb391b7631f59" name="aeb15e1c948fc972b95dcb391b7631f59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb15e1c948fc972b95dcb391b7631f59">&#9670;&#160;</a></span>task()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MotorEncoderTask.MotorEncoder.task </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>shares</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Defines the task for <a class="el" href="class_motor_encoder_task_1_1_motor_encoder.html" title="MotorEncoder is the low-level control loop for Romi&#39;s motors.">MotorEncoder</a>. </p>
+<p>This generator function defines the task for the <a class="el" href="class_motor_encoder_task_1_1_motor_encoder.html" title="MotorEncoder is the low-level control loop for Romi&#39;s motors.">MotorEncoder</a>, is starts in an Initialization state before alternating between sensing and controlling states. It uses a PID to control the motor to a desired angular velocity. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shares</td><td>A tuple of shares (velocityShare, positionShare, reset) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/kevin/ME405/ME_405_Romi/src/<a class="el" href="_motor_encoder_task_8py.html">MotorEncoderTask.py</a></li>
 </ul>

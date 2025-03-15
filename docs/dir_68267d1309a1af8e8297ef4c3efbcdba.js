@@ -10,5 +10,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "Motor.py", "_motor_8py.html", "_motor_8py" ],
     [ "MotorEncoderTask.py", "_motor_encoder_task_8py.html", "_motor_encoder_task_8py" ],
     [ "PID.py", "_p_i_d_8py.html", "_p_i_d_8py" ],
-    [ "task_share.py", "task__share_8py.html", "task__share_8py" ]
+    [ "task_share.py", "task__share_8py.html", "task__share_8py" ],
+    [ "Tracker.py", "_tracker_8py.html", "_tracker_8py" ]
 ];

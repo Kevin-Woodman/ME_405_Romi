@@ -20,7 +20,7 @@ var annotated_dup =
       [ "Motor", "class_motor_1_1_motor.html", "class_motor_1_1_motor" ]
     ] ],
     [ "MotorEncoderTask", null, [
-      [ "MotorEncoder", "class_motor_encoder_task_1_1_motor_encoder.html", null ]
+      [ "MotorEncoder", "class_motor_encoder_task_1_1_motor_encoder.html", "class_motor_encoder_task_1_1_motor_encoder" ]
     ] ],
     [ "PID", null, [
       [ "PID", "class_p_i_d_1_1_p_i_d.html", "class_p_i_d_1_1_p_i_d" ]

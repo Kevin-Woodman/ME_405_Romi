@@ -1,4 +1,5 @@
 ## @file MotorEncoderTask.py
+# This file contains the class responsible for controlling Romi's low level motor control based on desired velocity.
 
 from pyb import Pin, Timer, USB_VCP, ADC
 import task_share
@@ -7,7 +8,17 @@ import cotask
 import PID
 import Motor
 import Encoder
+
+## MotorEncoder is the low-level control loop for Romi's motors.
+# This class contains an initialization function and a generator function to be used as a task.
+# Each instance of this class represents either the left or right motor encoder pair.
+
 class MotorEncoder():
+
+    ## Creates a MotorEncoder object.
+    # This function initializes either a left or right MotorEncoder object
+    # @param side either "R" or "L" to indicate which pair
+    # @param vbat current battery voltage for effort caluclation
     def __init__(self, side, vbat):
 
         self.vbat = vbat
@@ -27,8 +38,13 @@ class MotorEncoder():
             raise ValueError("Class takes 'R' or 'L' as parameters")
 
 
-        motorGain = 5.57 # (rad/s)/V
-        offset = 2.1 # Offset to overcome static friction.
+        ## Calculated gain of the motor [(rad/s)/V]
+        motorGain = 5.57
+
+        ## Offset to overcome static friction.
+        offset = 2.1
+
+        ## Feedforward function.
         self.vel2volt = lambda vel: ((vel / motorGain) + offset * (-1 if vel < 0 else 1))
 
         # (DeltaVelocity [rad/s] ----> DeltaVoltage [V])
@@ -39,6 +55,10 @@ class MotorEncoder():
         self.pid = PID.PID(Kp_m, Ki_m, Kd_m)
         self.error = 0
 
+    ## Defines the task for MotorEncoder.
+    # This generator function defines the task for the MotorEncoder, is starts in an Initialization state before alternating
+    # between sensing and controlling states. It uses a PID to control the motor to a desired angular velocity.
+    # @param shares A tuple of shares (velocityShare, positionShare, reset)
     def task(self, shares):
 
         velocityShare, pos, reset = shares
