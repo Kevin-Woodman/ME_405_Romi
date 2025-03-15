@@ -119,11 +119,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad68de23dfdfe4909c2994321c2f13e06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> object.  <br /></td></tr>
 <tr class="separator:ad68de23dfdfe4909c2994321c2f13e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf06df701b1a4294b0cd24ce209aeafa" id="r_acf06df701b1a4294b0cd24ce209aeafa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf06df701b1a4294b0cd24ce209aeafa">update</a> (self, error)</td></tr>
-<tr class="memdesc:acf06df701b1a4294b0cd24ce209aeafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> control with a given error Returns an output based on the provided error and the previous errors.  <br /></td></tr>
+<tr class="memdesc:acf06df701b1a4294b0cd24ce209aeafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> control with a given error.  <br /></td></tr>
 <tr class="separator:acf06df701b1a4294b0cd24ce209aeafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a191d3319535c92eacfaa3bf4d1692ebd" id="r_a191d3319535c92eacfaa3bf4d1692ebd"><td class="memItemLeft" align="right" valign="top"><a id="a191d3319535c92eacfaa3bf4d1692ebd" name="a191d3319535c92eacfaa3bf4d1692ebd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> (self)</td></tr>
-<tr class="memdesc:a191d3319535c92eacfaa3bf4d1692ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the pid object Sets the integral and next derivative to 0. <br /></td></tr>
+<tr class="memitem:a191d3319535c92eacfaa3bf4d1692ebd" id="r_a191d3319535c92eacfaa3bf4d1692ebd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a191d3319535c92eacfaa3bf4d1692ebd">reset</a> (self)</td></tr>
+<tr class="memdesc:a191d3319535c92eacfaa3bf4d1692ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the pid object.  <br /></td></tr>
 <tr class="separator:a191d3319535c92eacfaa3bf4d1692ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -204,6 +203,26 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>sum</b> = 0</td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a191d3319535c92eacfaa3bf4d1692ebd" name="a191d3319535c92eacfaa3bf4d1692ebd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a191d3319535c92eacfaa3bf4d1692ebd">&#9670;&#160;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PID.PID.reset </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resets the pid object. </p>
+<p>Sets the integral and next derivative to 0 </p>
+
+</div>
+</div>
 <a id="acf06df701b1a4294b0cd24ce209aeafa" name="acf06df701b1a4294b0cd24ce209aeafa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acf06df701b1a4294b0cd24ce209aeafa">&#9670;&#160;</a></span>update()</h2>
 
@@ -223,8 +242,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>sum</b> = 0</td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Update the <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> control with a given error Returns an output based on the provided error and the previous errors. </p>
-<p>This function takes into account the time between when it was last called. The output is given by:</p><div class="image">
+<p>Update the <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> control with a given error. </p>
+<p>Returns an output based on the provided error and the previous errors. This function takes into account the time between when it was last called. The output is given by:</p><div class="image">
 <img src="PID.png" alt="" width="50%"/>
 </div>
  <dl class="params"><dt>Parameters</dt><dd>

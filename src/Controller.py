@@ -1,4 +1,5 @@
 ## @file Controller.py
+# This file contains the class responsible for controlling Romi's top level motor control based on line sensor and IMU readings
 
 from imu import IMU
 import sensorArray
@@ -7,13 +8,19 @@ from pyb import Pin, Timer, USB_VCP, ADC
 import task_share
 import cotask
 
+## Controller is the top-level control loop based on line sensor and IMU readings.
+# This class contains an initialization function, helper functions, and a generator function to be used as a task.
+# It uses data from whichever sensor is active in the current state to dictate a velocity setpoint to send each
+# motor/encoder combination. Controller shares line thickness information with Tracker to indicate specific waypoints
+# on the track and supplement Tracker's encoder position tracking to maintain more consistent action.
 class controller:
-    '''
-    Controller is the top-level control loop.
-    It uses data from whichever sensor is active in the current state to dictate a velocity setpoint to send each motor/encoder combination
-    Controller shares line thickness information with Tracker to indicate specific waypoints on the track and supliment Tracker's encoder position tracking to maintain more consistent action.
-    '''
 
+    ## Creates a controller object.
+    # This function initializes a controller object which involves:
+    # * Creating and Configuring the IMU
+    # * Creating and Configuring the Sensor Array
+    # * Creating and Configuring the IMU's PID controller
+    # * Creating and Configuring the Sensor Array's PID controller
     def __init__(self):
         # IMU Configuration
         i2c = pyb.I2C(1, mode=pyb.I2C.CONTROLLER)
@@ -34,6 +41,7 @@ class controller:
 
         self.sensor.configAll(whiteList,blackList)
 
+
         # LINE SENSOR PID CONTROLLER
         # Setpoint
         self.centerPos = 6
@@ -45,6 +53,7 @@ class controller:
         Kp_line = 1.25
         Ki_line = 0.1
         Kd_line = 0
+
 
         self.pid_line = PID.PID(Kp_line, Ki_line, Kd_line)
 
@@ -63,13 +72,9 @@ class controller:
 
         self.pid_imu = PID.PID(Kp_imu, Ki_imu, Kd_imu)
 
-
+    ## Section 0 (Init).
+    # Initializes and resets the controller class
     def _S0(self):
-        '''
-        State/Section 0
-
-        Initializes and resets.
-        '''
         if (self.state == self.S0_INIT):
             # Wait until enabled
             if(self.enable.get() == 1):
@@ -97,19 +102,17 @@ class controller:
                 self.state = self.S1_CONTROL
                 self.section = self.SC1
 
+    ## Section 1 (Line sensor).
+    # Control/Sense loop from start to imu section.
+    # - Controls based on line sensor
+    # - Looks for thick line
+    #     - Sends first thick line instance to Tracker
+    # - Switches to driving forward
+    # - Switches back to line following when told to by Tracker
+    # - Switches to looking for a thick line again when told to by Tracker
+    #     - Switches into IMU mode (\ref _SC2)
+    #     - Notifies Tracker
     def _SC1(self):
-        '''
-        Section 1
-
-        Control/Sense loop from start to post-diamond.
-
-        - Controls based on line sensor
-        - Looks for thick line
-            - Sends first thick line instance to Tracker
-            - Switches to driving forward
-        - State gets switched to S2_Diamond after indicated by Tracker share
-        '''
-
         if (self.state == self.S1_CONTROL):
             # If disabled
             if (self.enable.get() == 0):
@@ -163,14 +166,14 @@ class controller:
                 self.centroidPos = self.centerPos
             self.state = self.S1_CONTROL
 
+    ## Section 2 (IMU).
+    # Control/Sense loop from imu section to the end.
+    # - Controls based on imu
+    # - Travels in specific headings before being notified by Tracker to change heading
+    # - Sends first bump sensor trigger to Tracker
+    # - Stops when notified by Tracker
+    # - Reset to \ref _S0
     def _SC2(self):
-        '''
-        Section 2
-
-        Control/Sense Loop for IMU section
-
-        -
-        '''
         if (self.state == self.S1_CONTROL):
             if (self.enable.get() == 0 and not self.turn2Flag):
                 self.sectionShare.put(-3)
@@ -240,6 +243,10 @@ class controller:
             self.heading = self.imu.readEuler()[0]
             self.state = self.S1_CONTROL
 
+    ## Defines the task for Controller.
+    # This generator function defines the task for the controller, is starts in an Initialization state before alternating
+    # between sensing and controlling states. What each state does is dependent on what section Romi is in (\ref _SC1 or \ref _SC2)
+    # @param shares A tuple of shares (enable, lVelShare, rVelShare, sectionShare)
     def task(self, shares):
 
         self.enable, self.lVelShare, self.rVelShare, self.sectionShare = shares

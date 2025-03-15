@@ -46,7 +46,7 @@ class sensorArray:
 
         self.lights = [pyb.Pin(pin, pyb.Pin.OUT_PP) for pin in lightPins]
 
-    ## Configures all of the sensors
+    ## Configures all of the sensors.
     # This function configures all of the sensor's white and black levels either automatically or manually
     # @param whiteList if a whiteList is not provided the sensor will automatically calibrate when 'enter' is hit
     # @param blackList if a blackList is not provided the sensor will automatically calibrate when 'enter' is hit
@@ -69,7 +69,7 @@ class sensorArray:
    
         print("White:", whiteLevels,"Black:",blackLevels)
 
-    ## Calculates the centroid of the line sensor's reading
+    ## Calculates the centroid of the line sensor's reading.
     # The centroid of the line is calculated by taking a weighted average of each sensor's weighted by its index.
     # \image html Sumval.png width=30%
     # \image html centroid.png width=40%
@@ -97,13 +97,13 @@ class sensorArray:
         centroid /= sumVal
         return centroid, thickness
 
-    ## Enable IR emmiters
+    ## Enable IR emmiters.
     # Enables all the IR emmiters to full power
     def enable(self):
         for pin in self.lights:
             pin.high()
 
-    ## Disable IR emmiters
+    ## Disable IR emmiters.
     # Disables all the IR emmiters
     def disable(self):
         for pin in self.lights:

@@ -11,7 +11,7 @@ var annotated_dup =
       [ "Encoder", "class_encoder_1_1_encoder.html", "class_encoder_1_1_encoder" ]
     ] ],
     [ "imu", null, [
-      [ "IMU", "classimu_1_1_i_m_u.html", null ]
+      [ "IMU", "classimu_1_1_i_m_u.html", "classimu_1_1_i_m_u" ]
     ] ],
     [ "lightSensor", null, [
       [ "lightSensor", "classlight_sensor_1_1light_sensor.html", "classlight_sensor_1_1light_sensor" ]

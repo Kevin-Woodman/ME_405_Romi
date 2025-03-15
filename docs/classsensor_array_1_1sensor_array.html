@@ -119,18 +119,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ae9b7abf138858e7fdad6bd2c2dbed312"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a <a class="el" href="classsensor_array_1_1sensor_array.html" title="Implements Light sensor array behavior.">sensorArray</a> object.  <br /></td></tr>
 <tr class="separator:ae9b7abf138858e7fdad6bd2c2dbed312"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e8e099bda2052d85ea4c12ab7f03bd8" id="r_a0e8e099bda2052d85ea4c12ab7f03bd8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e8e099bda2052d85ea4c12ab7f03bd8">configAll</a> (self, whiteList=None, blackList=None)</td></tr>
-<tr class="memdesc:a0e8e099bda2052d85ea4c12ab7f03bd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures all of the sensors This function configures all of the sensor's white and black levels either automatically or manually.  <br /></td></tr>
+<tr class="memdesc:a0e8e099bda2052d85ea4c12ab7f03bd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures all of the sensors.  <br /></td></tr>
 <tr class="separator:a0e8e099bda2052d85ea4c12ab7f03bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fb37acce3e5f2e1f544527eadbb7843" id="r_a6fb37acce3e5f2e1f544527eadbb7843"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fb37acce3e5f2e1f544527eadbb7843">getCentroid</a> (self)</td></tr>
-<tr class="memdesc:a6fb37acce3e5f2e1f544527eadbb7843"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the centroid of the line sensor's reading The centroid of the line is calculated by taking a weighted average of each sensor's weighted by its index.  <br /></td></tr>
+<tr class="memdesc:a6fb37acce3e5f2e1f544527eadbb7843"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the centroid of the line sensor's reading.  <br /></td></tr>
 <tr class="separator:a6fb37acce3e5f2e1f544527eadbb7843"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ea9e78a517536fab593b761d20880b8" id="r_a0ea9e78a517536fab593b761d20880b8"><td class="memItemLeft" align="right" valign="top"><a id="a0ea9e78a517536fab593b761d20880b8" name="a0ea9e78a517536fab593b761d20880b8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>enable</b> (self)</td></tr>
-<tr class="memdesc:a0ea9e78a517536fab593b761d20880b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable IR emmiters Enables all the IR emmiters to full power. <br /></td></tr>
+<tr class="memitem:a0ea9e78a517536fab593b761d20880b8" id="r_a0ea9e78a517536fab593b761d20880b8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ea9e78a517536fab593b761d20880b8">enable</a> (self)</td></tr>
+<tr class="memdesc:a0ea9e78a517536fab593b761d20880b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable IR emmiters.  <br /></td></tr>
 <tr class="separator:a0ea9e78a517536fab593b761d20880b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa373d291f9b330a9788b33af02bc77f5" id="r_aa373d291f9b330a9788b33af02bc77f5"><td class="memItemLeft" align="right" valign="top"><a id="aa373d291f9b330a9788b33af02bc77f5" name="aa373d291f9b330a9788b33af02bc77f5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>disable</b> (self)</td></tr>
-<tr class="memdesc:aa373d291f9b330a9788b33af02bc77f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable IR emmiters Disables all the IR emmiters. <br /></td></tr>
+<tr class="memitem:aa373d291f9b330a9788b33af02bc77f5" id="r_aa373d291f9b330a9788b33af02bc77f5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa373d291f9b330a9788b33af02bc77f5">disable</a> (self)</td></tr>
+<tr class="memdesc:aa373d291f9b330a9788b33af02bc77f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable IR emmiters.  <br /></td></tr>
 <tr class="separator:aa373d291f9b330a9788b33af02bc77f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -224,14 +222,54 @@ list&#160;</td><td class="memItemRight" valign="bottom"><b>lights</b> = [pyb.Pin
       </table>
 </div><div class="memdoc">
 
-<p>Configures all of the sensors This function configures all of the sensor's white and black levels either automatically or manually. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Configures all of the sensors. </p>
+<p>This function configures all of the sensor's white and black levels either automatically or manually </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">whiteList</td><td>if a whiteList is not provided the sensor will automatically calibrate when 'enter' is hit </td></tr>
     <tr><td class="paramname">blackList</td><td>if a blackList is not provided the sensor will automatically calibrate when 'enter' is hit </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aa373d291f9b330a9788b33af02bc77f5" name="aa373d291f9b330a9788b33af02bc77f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa373d291f9b330a9788b33af02bc77f5">&#9670;&#160;</a></span>disable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sensorArray.sensorArray.disable </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disable IR emmiters. </p>
+<p>Disables all the IR emmiters </p>
+
+</div>
+</div>
+<a id="a0ea9e78a517536fab593b761d20880b8" name="a0ea9e78a517536fab593b761d20880b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ea9e78a517536fab593b761d20880b8">&#9670;&#160;</a></span>enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sensorArray.sensorArray.enable </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enable IR emmiters. </p>
+<p>Enables all the IR emmiters to full power </p>
 
 </div>
 </div>
@@ -250,8 +288,8 @@ list&#160;</td><td class="memItemRight" valign="bottom"><b>lights</b> = [pyb.Pin
       </table>
 </div><div class="memdoc">
 
-<p>Calculates the centroid of the line sensor's reading The centroid of the line is calculated by taking a weighted average of each sensor's weighted by its index. </p>
-<div class="image">
+<p>Calculates the centroid of the line sensor's reading. </p>
+<p>The centroid of the line is calculated by taking a weighted average of each sensor's weighted by its index. </p><div class="image">
 <img src="Sumval.png" alt="" width="30%"/>
 </div>
  <div class="image">

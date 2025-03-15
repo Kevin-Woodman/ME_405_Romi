@@ -72,7 +72,7 @@
 #     exit(0)
 # @endcode
 #
-# The current voltage is then used to calculate motor effort from the desired voltage.
+# The current voltage is then used to calculate motor effort from the desired velocity.
 # The following code is located in \ref MotorEncoderTask.py
 # @code
 # self.motor.set_effort(voltage/Vbat * 100)

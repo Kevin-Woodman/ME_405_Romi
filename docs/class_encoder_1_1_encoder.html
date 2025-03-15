@@ -109,20 +109,26 @@ $(function(){initNavTree('class_encoder_1_1_encoder.html',''); initResizable(tru
   <div class="headertitle"><div class="title">Encoder.Encoder Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements a quadrature encoder driver.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a12c2a6a5e18733704ccb3d13245d7e55" id="r_a12c2a6a5e18733704ccb3d13245d7e55"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12c2a6a5e18733704ccb3d13245d7e55">__init__</a> (self, tim, chA_pin, chB_pin)</td></tr>
+<tr class="memdesc:a12c2a6a5e18733704ccb3d13245d7e55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the motor object.  <br /></td></tr>
 <tr class="separator:a12c2a6a5e18733704ccb3d13245d7e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3edf3fe66f8af2e5667a0903452fa49d" id="r_a3edf3fe66f8af2e5667a0903452fa49d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3edf3fe66f8af2e5667a0903452fa49d">update</a> (self)</td></tr>
+<tr class="memdesc:a3edf3fe66f8af2e5667a0903452fa49d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the encoder's internal state.  <br /></td></tr>
 <tr class="separator:a3edf3fe66f8af2e5667a0903452fa49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d7c479a55cd3a448e1e98e5f525f678" id="r_a9d7c479a55cd3a448e1e98e5f525f678"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d7c479a55cd3a448e1e98e5f525f678">get_dt</a> (self)</td></tr>
-<tr class="separator:a9d7c479a55cd3a448e1e98e5f525f678"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9df86a53897e453550b1c36de25a70a9" id="r_a9df86a53897e453550b1c36de25a70a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9df86a53897e453550b1c36de25a70a9">get_position</a> (self)</td></tr>
+<tr class="memdesc:a9df86a53897e453550b1c36de25a70a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the relative position of the encoder.  <br /></td></tr>
 <tr class="separator:a9df86a53897e453550b1c36de25a70a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed5c0bf1fd354aa5a91aba6e9cc4c229" id="r_aed5c0bf1fd354aa5a91aba6e9cc4c229"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed5c0bf1fd354aa5a91aba6e9cc4c229">get_velocity</a> (self)</td></tr>
+<tr class="memdesc:aed5c0bf1fd354aa5a91aba6e9cc4c229"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the velocity of the encoder.  <br /></td></tr>
 <tr class="separator:aed5c0bf1fd354aa5a91aba6e9cc4c229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ff69d15a286f08e267c9bd8314dc2c9" id="r_a9ff69d15a286f08e267c9bd8314dc2c9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ff69d15a286f08e267c9bd8314dc2c9">zero</a> (self)</td></tr>
+<tr class="memdesc:a9ff69d15a286f08e267c9bd8314dc2c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zeros the encoder.  <br /></td></tr>
 <tr class="separator:a9ff69d15a286f08e267c9bd8314dc2c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -146,7 +152,20 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>delta</b> = 0</td></tr
 int&#160;</td><td class="memItemRight" valign="bottom"><b>dt</b> = 0</td></tr>
 <tr class="separator:a2129f30fc7236307fbe00c698e549bff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements a quadrature encoder driver. </p>
+<p>This class allows for control of the encoder in the Gearmotor and <a class="el" href="class_encoder_1_1_encoder.html" title="Implements a quadrature encoder driver.">Encoder</a> Assembly for Romi/TI-RSLK MAX. The class uses two timer channel pin to read the state of the quadrature encoder. <b>Example:</b> </p><div class="fragment"><div class="line"><span class="comment"># Create the encoder object</span></div>
+<div class="line">encoder = <a class="code hl_namespace" href="namespace_encoder.html">Encoder</a>(1, Pin.board.PA8, Pin.board.PA9)</div>
+<div class="line"><span class="comment"># Update the encoder object</span></div>
+<div class="line">encoder.update()</div>
+<div class="line"><span class="comment"># Get the encoders position (in ticks)</span></div>
+<div class="line">pos = encoder.get_position()</div>
+<div class="line"><span class="comment"># Get the encoders velocity (in ticks/s)</span></div>
+<div class="line">vel = encoder.get_velocity()</div>
+<div class="line"><span class="comment"># Zero the encoder</span></div>
+<div class="line">encoder.zero()</div>
+<div class="ttc" id="anamespace_encoder_html"><div class="ttname"><a href="namespace_encoder.html">Encoder</a></div><div class="ttdef"><b>Definition</b> Encoder.py:1</div></div>
+</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a12c2a6a5e18733704ccb3d13245d7e55" name="a12c2a6a5e18733704ccb3d13245d7e55"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a12c2a6a5e18733704ccb3d13245d7e55">&#9670;&#160;</a></span>__init__()</h2>
 
@@ -175,28 +194,21 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>dt</b> = 0</td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Initializes an Encoder object</pre> 
+
+<p>Initializes the motor object. </p>
+<p>This function initializes a motor object, configuring the provided pins and timer. </p><div class="fragment"><div class="line">encoder = <a class="code hl_namespace" href="namespace_encoder.html">Encoder</a>(1, Pin.board.PA8, Pin.board.PA9)</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tim</td><td>The numer of the timer to be configured </td></tr>
+    <tr><td class="paramname">chA_pin</td><td>The timer's Channel A pin </td></tr>
+    <tr><td class="paramname">chB_pin</td><td>The timer's Channel B pin </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9d7c479a55cd3a448e1e98e5f525f678" name="a9d7c479a55cd3a448e1e98e5f525f678"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d7c479a55cd3a448e1e98e5f525f678">&#9670;&#160;</a></span>get_dt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Encoder.Encoder.get_dt </td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<pre class="fragment">Returns a measure of velocity using the the most recently updated
-value of delta as determined within the update() method</pre> 
-</div>
-</div>
 <a id="a9df86a53897e453550b1c36de25a70a9" name="a9df86a53897e453550b1c36de25a70a9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9df86a53897e453550b1c36de25a70a9">&#9670;&#160;</a></span>get_position()</h2>
 
@@ -211,8 +223,10 @@ value of delta as determined within the update() method</pre>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Returns the most recently updated value of position as determined
-within the update() method</pre> 
+
+<p>Get the relative position of the encoder. </p>
+<p>This function gets the angular position (in ticks) of the motor relative to the angle at which the encoder was when the encoder object was created. </p>
+
 </div>
 </div>
 <a id="aed5c0bf1fd354aa5a91aba6e9cc4c229" name="aed5c0bf1fd354aa5a91aba6e9cc4c229"></a>
@@ -229,8 +243,10 @@ within the update() method</pre>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Returns a measure of velocity using the the most recently updated
-value of delta as determined within the update() method</pre> 
+
+<p>Get the velocity of the encoder. </p>
+<p>This function gets the angular velocity (in ticks / second) of the motor. This function will be less accurate if the encoder is updated too quickly. </p>
+
 </div>
 </div>
 <a id="a3edf3fe66f8af2e5667a0903452fa49d" name="a3edf3fe66f8af2e5667a0903452fa49d"></a>
@@ -247,8 +263,10 @@ value of delta as determined within the update() method</pre>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Runs one update step on the encoder's timer counter to keep
-track of the change in count and check for counter reload</pre> 
+
+<p>Update the encoder's internal state. </p>
+<p>This function updates the encoders internal state which calculates current position and velocity. This function must be ran regularly for proper functionality. </p>
+
 </div>
 </div>
 <a id="a9ff69d15a286f08e267c9bd8314dc2c9" name="a9ff69d15a286f08e267c9bd8314dc2c9"></a>
@@ -265,8 +283,10 @@ track of the change in count and check for counter reload</pre>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Sets the present encoder position to zero and causes future updates
-to measure with respect to the new zero position</pre> 
+
+<p>Zeros the encoder. </p>
+<p>This function zeros the encoder. (Setting position to zero). It first updates the encoder to ensure that the position is set to zero at the moment it is called. </p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

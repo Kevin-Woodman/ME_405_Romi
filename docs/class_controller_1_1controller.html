@@ -110,14 +110,17 @@ $(function(){initNavTree('class_controller_1_1controller.html',''); initResizabl
   <div class="headertitle"><div class="title">Controller.controller Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Controller is the top-level control loop based on line sensor and <a class="el" href="classimu_1_1_i_m_u.html" title="Implements a driver for the LSM6DS33 inertial measurement unit.">IMU</a> readings.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8ef4f00e30a182b9157939a9ccfbca38" id="r_a8ef4f00e30a182b9157939a9ccfbca38"><td class="memItemLeft" align="right" valign="top"><a id="a8ef4f00e30a182b9157939a9ccfbca38" name="a8ef4f00e30a182b9157939a9ccfbca38"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b> (self)</td></tr>
+<tr class="memitem:a8ef4f00e30a182b9157939a9ccfbca38" id="r_a8ef4f00e30a182b9157939a9ccfbca38"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ef4f00e30a182b9157939a9ccfbca38">__init__</a> (self)</td></tr>
+<tr class="memdesc:a8ef4f00e30a182b9157939a9ccfbca38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a controller object.  <br /></td></tr>
 <tr class="separator:a8ef4f00e30a182b9157939a9ccfbca38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8b7a9b82fa3324603c34dd2c156921e" id="r_aa8b7a9b82fa3324603c34dd2c156921e"><td class="memItemLeft" align="right" valign="top"><a id="aa8b7a9b82fa3324603c34dd2c156921e" name="aa8b7a9b82fa3324603c34dd2c156921e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>task</b> (self, shares)</td></tr>
+<tr class="memitem:aa8b7a9b82fa3324603c34dd2c156921e" id="r_aa8b7a9b82fa3324603c34dd2c156921e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8b7a9b82fa3324603c34dd2c156921e">task</a> (self, shares)</td></tr>
+<tr class="memdesc:aa8b7a9b82fa3324603c34dd2c156921e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the task for Controller.  <br /></td></tr>
 <tr class="separator:aa8b7a9b82fa3324603c34dd2c156921e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -219,17 +222,45 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>SC2</b> = 2</td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ab52c901db4f5767517c737679f55302c" id="r_ab52c901db4f5767517c737679f55302c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab52c901db4f5767517c737679f55302c">_S0</a> (self)</td></tr>
+<tr class="memdesc:ab52c901db4f5767517c737679f55302c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Section 0 (Init).  <br /></td></tr>
 <tr class="separator:ab52c901db4f5767517c737679f55302c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafd84192572e67aaac79081a447a2a81" id="r_aafd84192572e67aaac79081a447a2a81"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafd84192572e67aaac79081a447a2a81">_SC1</a> (self)</td></tr>
+<tr class="memdesc:aafd84192572e67aaac79081a447a2a81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Section 1 (Line sensor).  <br /></td></tr>
 <tr class="separator:aafd84192572e67aaac79081a447a2a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1e68bd870679d16ad576ced520c2715" id="r_ac1e68bd870679d16ad576ced520c2715"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1e68bd870679d16ad576ced520c2715">_SC2</a> (self)</td></tr>
+<tr class="memdesc:ac1e68bd870679d16ad576ced520c2715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Section 2 (<a class="el" href="classimu_1_1_i_m_u.html" title="Implements a driver for the LSM6DS33 inertial measurement unit.">IMU</a>).  <br /></td></tr>
 <tr class="separator:ac1e68bd870679d16ad576ced520c2715"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><pre class="fragment">Controller is the top-level control loop.
-It uses data from whichever sensor is active in the current state to dictate a velocity setpoint to send each motor/encoder combination
-Controller shares line thickness information with Tracker to indicate specific waypoints on the track and supliment Tracker's encoder position tracking to maintain more consistent action.
-</pre> </div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p>Controller is the top-level control loop based on line sensor and <a class="el" href="classimu_1_1_i_m_u.html" title="Implements a driver for the LSM6DS33 inertial measurement unit.">IMU</a> readings. </p>
+<p>This class contains an initialization function, helper functions, and a generator function to be used as a task. It uses data from whichever sensor is active in the current state to dictate a velocity setpoint to send each motor/encoder combination. Controller shares line thickness information with Tracker to indicate specific waypoints on the track and supplement Tracker's encoder position tracking to maintain more consistent action. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8ef4f00e30a182b9157939a9ccfbca38" name="a8ef4f00e30a182b9157939a9ccfbca38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ef4f00e30a182b9157939a9ccfbca38">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Controller.controller.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a controller object. </p>
+<p>This function initializes a controller object which involves:</p><ul>
+<li>Creating and Configuring the <a class="el" href="classimu_1_1_i_m_u.html" title="Implements a driver for the LSM6DS33 inertial measurement unit.">IMU</a></li>
+<li>Creating and Configuring the Sensor Array</li>
+<li>Creating and Configuring the <a class="el" href="classimu_1_1_i_m_u.html" title="Implements a driver for the LSM6DS33 inertial measurement unit.">IMU</a>'s PID controller</li>
+<li>Creating and Configuring the Sensor Array's PID controller </li>
+</ul>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab52c901db4f5767517c737679f55302c" name="ab52c901db4f5767517c737679f55302c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab52c901db4f5767517c737679f55302c">&#9670;&#160;</a></span>_S0()</h2>
 
@@ -252,10 +283,10 @@ Controller shares line thickness information with Tracker to indicate specific w
   </tr>
 </table>
 </div><div class="memdoc">
-<pre class="fragment">State/Section 0
 
-Initializes and resets.
-</pre> 
+<p>Section 0 (Init). </p>
+<p>Initializes and resets the controller class </p>
+
 </div>
 </div>
 <a id="aafd84192572e67aaac79081a447a2a81" name="aafd84192572e67aaac79081a447a2a81"></a>
@@ -280,16 +311,23 @@ Initializes and resets.
   </tr>
 </table>
 </div><div class="memdoc">
-<pre class="fragment">Section 1
 
-Control/Sense loop from start to post-diamond.
+<p>Section 1 (Line sensor). </p>
+<p>Control/Sense loop from start to imu section.</p><ul>
+<li>Controls based on line sensor</li>
+<li>Looks for thick line<ul>
+<li>Sends first thick line instance to Tracker</li>
+</ul>
+</li>
+<li>Switches to driving forward</li>
+<li>Switches back to line following when told to by Tracker</li>
+<li>Switches to looking for a thick line again when told to by Tracker<ul>
+<li>Switches into <a class="el" href="classimu_1_1_i_m_u.html" title="Implements a driver for the LSM6DS33 inertial measurement unit.">IMU</a> mode (<a class="el" href="#ac1e68bd870679d16ad576ced520c2715">_SC2</a>)</li>
+<li>Notifies Tracker </li>
+</ul>
+</li>
+</ul>
 
-- Controls based on line sensor
-- Looks for thick line
-    - Sends first thick line instance to Tracker
-    - Switches to driving forward
-- State gets switched to S2_Diamond after indicated by Tracker share
-</pre> 
 </div>
 </div>
 <a id="ac1e68bd870679d16ad576ced520c2715" name="ac1e68bd870679d16ad576ced520c2715"></a>
@@ -314,12 +352,45 @@ Control/Sense loop from start to post-diamond.
   </tr>
 </table>
 </div><div class="memdoc">
-<pre class="fragment">Section 2
 
-Control/Sense Loop for IMU section
+<p>Section 2 (<a class="el" href="classimu_1_1_i_m_u.html" title="Implements a driver for the LSM6DS33 inertial measurement unit.">IMU</a>). </p>
+<p>Control/Sense loop from imu section to the end.</p><ul>
+<li>Controls based on imu</li>
+<li>Travels in specific headings before being notified by Tracker to change heading</li>
+<li>Sends first bump sensor trigger to Tracker</li>
+<li>Stops when notified by Tracker</li>
+<li>Reset to <a class="el" href="#ab52c901db4f5767517c737679f55302c">_S0</a> </li>
+</ul>
 
--
-</pre> 
+</div>
+</div>
+<a id="aa8b7a9b82fa3324603c34dd2c156921e" name="aa8b7a9b82fa3324603c34dd2c156921e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8b7a9b82fa3324603c34dd2c156921e">&#9670;&#160;</a></span>task()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Controller.controller.task </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>shares</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Defines the task for Controller. </p>
+<p>This generator function defines the task for the controller, is starts in an Initialization state before alternating between sensing and controlling states. What each state does is dependent on what section Romi is in (<a class="el" href="#aafd84192572e67aaac79081a447a2a81">_SC1</a> or <a class="el" href="#ac1e68bd870679d16ad576ced520c2715">_SC2</a>) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shares</td><td>A tuple of shares (enable, lVelShare, rVelShare, sectionShare) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

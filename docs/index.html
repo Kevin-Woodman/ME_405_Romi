@@ -163,7 +163,7 @@ Battery Voltage Adjustor</h2>
 <div class="line">    <span class="comment"># If we are low on charge</span></div>
 <div class="line">    print(<span class="stringliteral">&quot;CHARGE BATTERIES&quot;</span>)</div>
 <div class="line">    exit(0)</div>
-</div><!-- fragment --><p>The current voltage is then used to calculate motor effort from the desired voltage. The following code is located in <a class="el" href="_motor_encoder_task_8py.html">MotorEncoderTask.py</a> </p><div class="fragment"><div class="line">self.motor.set_effort(voltage/Vbat * 100)</div>
+</div><!-- fragment --><p>The current voltage is then used to calculate motor effort from the desired velocity. The following code is located in <a class="el" href="_motor_encoder_task_8py.html">MotorEncoderTask.py</a> </p><div class="fragment"><div class="line">self.motor.set_effort(voltage/Vbat * 100)</div>
 </div><!-- fragment --><p> Operating in voltage allows Romi to directly use motor gain for feedforwarding </p><div class="fragment"><div class="line">motorGain = 5.57  <span class="comment"># (rad/s)/V</span></div>
 <div class="line">offset = 2.1  <span class="comment"># Offset to overcome static friction.</span></div>
 <div class="line">self.vel2volt = <span class="keyword">lambda</span> vel: ((vel / motorGain) + offset * (-1 <span class="keywordflow">if</span> vel &lt; 0 <span class="keywordflow">else</span> 1))</div>

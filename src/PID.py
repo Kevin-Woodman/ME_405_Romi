@@ -34,7 +34,7 @@ class PID:
         self.lastError = None
         self.sum = 0
 
-    ## Update the PID control with a given error
+    ## Update the PID control with a given error.
     # Returns an output based on the provided error and the previous errors.
     # This function takes into account the time between when it was last called.
     # The output is given by: \image html PID.png width=50%
@@ -57,7 +57,7 @@ class PID:
 
         return output
 
-    ## Resets the pid object
+    ## Resets the pid object.
     # Sets the integral and next derivative to 0
     def reset(self):
         self.lastError = None
