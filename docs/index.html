@@ -117,14 +117,72 @@ Introduction</h1>
 <h1><a class="anchor" id="ss_hardware"></a>
 Hardware</h1>
 <p>The team’s Romi affectionately nicknamed “Zippy,” was developed in ten weeks and includes a 9-DOF IMU, 13-unit IR reflectance sensor array, tactile switch bump sensor, HC-05 Bluetooth module, and 20kg positional servo, in addition to the provided MCU and Motor Driver/PDB development boards.</p>
-<p>[Romi Photo]</p>
+<div class="image">
+<img src="Romi.png" alt="" width="75%"/>
+</div>
 <p>This section serves to break down each hardware component individually and provides a brief description of the purpose and implementation of each.</p>
 <h2><a class="anchor" id="ss_wiring_diagram"></a>
 Wiring Diagram</h2>
-<div class="image">
-<img src="Final Wiring Diagram.jpg" alt="" width="75%"/>
+<p>A comprehensive wiring diagram is provided below for reference throughout the section. </p><div class="image">
+<img src="Final Wiring Diagram.jpg" alt="" width="50%"/>
 </div>
-<h1><a class="anchor" id="ss_overview"></a>
+<h2><a class="anchor" id="ss_nucleo"></a>
+Nucleo MCU Development Board &amp; “Shoe of Brian”</h2>
+<p>The Nucleo-L476RG is a development board from STMicroelectronics featuring the STM32L476RG microcontroller, a single-core microcontroller with 1 MB of flash memory and 128 KB of RAM. The Nucleo features two, 38-pin male headers that provide access to PWM timer channels, ADC inputs, I2C communication and more. The team maximized the capacity of the board, ultimately being bottlenecked by the available ADC input pins. The board provided an excellent base for the team to develop embedded programming skills in Micropython, skills which are easily transferrable to other STM32-based microcontrollers, an increasingly common platform.</p>
+<p>The Shoe-of-Brian is a custom auxiliary PCB attached directly to the headers on the back side of the Nucleo, and functions primarily to provide direct UART communication access to the MCU, bypassing the included “ST-Link” attached to the Nucleo. This allowed teams to flash Micropython code directly to the MCU through a mini-USB port on the Shoe.</p>
+<h2><a class="anchor" id="ss_bluetooth"></a>
+Bluetooth module</h2>
+<p>A shortcoming of the Nucleo-L476RG that the team identified was the absence of on-board Bluetooth communication. The team knew that it would be invaluable to use serial communication for debugging and performance analysis. Doing so without Bluetooth required leaving Romi plugged in via mini-USB while running, greatly slowing down development. Accordingly, the team implemented an HC-05 wireless Bluetooth receiver connected to UART 5. The code below mirrors Micropython's tty (text-only terminals) to UART 5. This allows the MCU to communicate serial data over Bluetooth.</p>
+<div class="fragment"><div class="line"><span class="comment"># Bluetooth Configuration</span></div>
+<div class="line">uart = pyb.UART(5, 115200)</div>
+<div class="line">uart.init(115200, bits=8, parity=<span class="keywordtype">None</span>, stop=1)</div>
+<div class="line">pyb.repl_uart(uart)</div>
+</div><!-- fragment --><h2><a class="anchor" id="ss_motor_driver"></a>
+Motor Driver and Power Distribution Board</h2>
+<p>The Motor Driver and Power Distribution Board is designed specifically for Romi’s chassis by Pololu Robotics. It features dual motor drivers for independently controlling the two brushed DC motors included on Romi, along with convenient connections for the magnetic quadrature encoders attached to Romi’s motors. Additionally, it provides onboard power regulation to distribute power from six AA batteries at various voltages from logic levels, 3.3V and 5V, to full battery power.</p>
+<p>The team utilized all power levels provided by the board. 3.3V for the MCU, 5V for the servo, and unregulated battery power for the motors. The specifications of the board were frequented to assure proper current could be provided through the regulator to all components.</p>
+<h2><a class="anchor" id="ss_motor_encoder"></a>
+Motors and Encoders</h2>
+<p>Romi features two plastic gearmotors with a reduction gearing 120:1. The motors have extended backshafts to allow 12 CPR, magnetic quadrature encoders to attach directly. The motors and encoders are attached directly to the PBD as detailed on the Polulu website and are thus omitted from the wiring diagram. The motors were experimentally characterized to calculate their time constant and gain value based on the following equation.</p>
+<p>[EQN]</p>
+<p>To achieve this, the team ran Romi at varying input voltages and recorded velocity readings in radians per second. The resulting graphs display import motor characteristics which were used to allow the team to instruct specific motor velocities during the time trials.</p>
+<p>[GRAPHS]</p>
+<h2><a class="anchor" id="ss_linesensor"></a>
+IR Reflectance Sensor Array (“Line Sensor”)</h2>
+<p>Line detection was one of the primary ways to navigate the track quickly. For that, the team opted to use an array of 13 infrared reflectance sensors, which emit light from a small diode and output a voltage depending on how reflective the surface is that they are facing. After researching the availability, the team made a pivotal trade-off decision.</p>
+<p>These sensors are available in both digital and analog output formats, an each presented challenges. Digital reflectance sensors require a GPIO pin to first be set as an output high, then as an input. The reflectance reading can then be calculated from the time it takes for the signal to decay. Analog sensors are much quicker by comparison, but the Nucleo is far shorter on analog inputs than digital. Additionally, the arrays are available in two different pitches, 8mm and 4mm. A tighter pitch lessens the tracking width, but increases the resolution of the measurement, allowing for detection of different line thicknesses.</p>
+<p>Ultimately, the team decided to choose an analog sensor with a 4mm pitch, which utilized as many unallocated analog channels as possible with 13. The digital sensor required far too much time to be polled fast enough to navigate the course at high speeds, and the narrow pitch was an integral element in the teams strategy to track the certain landmarks based on line width.</p>
+<p>To retrieve a line position reading from the sensor, the equation to calculate the x-position of a 2D shape’s centroid was adopted to an array of line sensor readings and their corresponding positions.</p>
+<div class="image">
+<img src="Sumval.png" alt="" width="30%"/>
+</div>
+ <div class="image">
+<img src="centroid.png" alt="" width="40%"/>
+</div>
+<p>Via this equation, the team was able to achieve a reading for the line position relative to the sensor position. This was subtracted from the middle position, sensor 7, to receive a difference used to control Romi. This is further discussed in the Software section and can be explored in the associated code documentation.</p>
+<h2><a class="anchor" id="ss_imu"></a>
+IMU</h2>
+<p>For sections of the course where lines were not available to follow, the team needed a way to control both the forward velocity and orientation of Romi. The encoders provided sufficient information to ensure specific forward velocity, as well as track the distance Romi has traveled, but do not provide a reliable way to determine orientation. To fulfil this requirement, the team decided to use an IMU, the BNO055 chip from Bosch, attached to a breakout board from Adafruit which provided the necessary circuity and through-hole access to the I2C pins.</p>
+<p>Implementation of the IMU required thorough and diligent examination of the associated documentation. This allowed the team to calibrate each of the three individual sensors—magnetometer, accelerometer, and gyroscope—and access the calibration coefficients for storage so that they could be manually written to the device when power-cycled to avoid repeated calibration. Additionally, the documentation provided reference to the device and register addresses necessary for writing to and reading data from the IMU over I2C communication protocol.</p>
+<p>Heading data was originally taken from the magnetometer, however, the team encountered reliability difficulties and instead switched to receiving heading data primarily from the fused gyroscope data integrated into the IMU. This heading data was used similarly to the line position data, as controller feedback to ensure Romi could drive at a consistent heading.</p>
+<h2><a class="anchor" id="ss_bump"></a>
+Bump Sensors</h2>
+<p>Switch-style bump sensors were used to fulfil the wall-detection requirement of the track, as well as provide the unexpected benefit of an emergency shutoff switch. Originally, Romi featured a set of two, three-switch bump sensors from Pololu, offering protection for the entire front half of Romi. Eventually, the servo displaced the right bump sensor, as it was unnecessary for the requirements of the challenge.</p>
+<p>The bump sensor implementation is perhaps the simplest of the whole design, and only requires each switch be wired to a GPIO port. Each pin is then assigned to the same interrupt callback in the program, as it is not required to determine which of the three switches was activated. The interrupt can contain any functionality needed depending on the section of the track Romi is in.</p>
+<h2><a class="anchor" id="ss_battery"></a>
+Battery Voltage Adjustor</h2>
+<p>Because the motors are effort based instead of voltage based as Romi's batteries drain the motors will behave differently. To account for this Romi contains a voltage divider which is used in conjunction with an ADC pin to measure the current battery voltage. The following code is located in <a class="el" href="main_8py.html">main.py</a> </p><div class="fragment"><div class="line">batPin = ADC(Pin.board.PB0)</div>
+<div class="line">Vbat = batPin.read() * (3.3 / 4095) * (58 / 20) * 1.125</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">if</span> (Vbat &lt;= 6.65):</div>
+<div class="line">    <span class="comment"># If we are low on charge</span></div>
+<div class="line">    print(<span class="stringliteral">&quot;CHARGE BATTERIES&quot;</span>)</div>
+<div class="line">    exit(0)</div>
+</div><!-- fragment --><p>The current voltage is then used to calculate motor effort from the desired velocity. The following code is located in <a class="el" href="_motor_encoder_task_8py.html">MotorEncoderTask.py</a> </p><div class="fragment"><div class="line">self.motor.set_effort(voltage/Vbat * 100)</div>
+</div><!-- fragment --><p> Operating in voltage allows Romi to directly use motor gain for feedforwarding </p><div class="fragment"><div class="line">motorGain = 5.57  <span class="comment"># (rad/s)/V</span></div>
+<div class="line">offset = 2.1  <span class="comment"># Offset to overcome static friction.</span></div>
+<div class="line">self.vel2volt = <span class="keyword">lambda</span> vel: ((vel / motorGain) + offset * (-1 <span class="keywordflow">if</span> vel &lt; 0 <span class="keywordflow">else</span> 1))</div>
+</div><!-- fragment --><h1><a class="anchor" id="ss_overview"></a>
 Overview</h1>
 <h2><a class="anchor" id="ss_tasks"></a>
 Tasks</h2>
@@ -146,28 +204,23 @@ Tasks</h2>
 <h2><a class="anchor" id="ss_track"></a>
 Track</h2>
 <div class="image">
-<img src="Gametrack Diagram.jpg" alt="" width="75%"/>
+<img src="Gametrack Diagram.jpg" alt="" width="50%"/>
 </div>
-<h2><a class="anchor" id="ss_bluetooth"></a>
-Bluetooth module</h2>
-<p>Romi uses HC-05 Wireless Bluetooth Receiver connected to UART 5. The below code mirrors Micropython's tty to UART 5. This allows micropython to communicate over the bluetooth module. </p><div class="fragment"><div class="line"><span class="comment"># Bluetooth Configuration</span></div>
-<div class="line">uart = pyb.UART(5, 115200)</div>
-<div class="line">uart.init(115200, bits=8, parity=<span class="keywordtype">None</span>, stop=1)</div>
-<div class="line">pyb.repl_uart(uart)</div>
-</div><!-- fragment --><h2><a class="anchor" id="ss_battery"></a>
-Battery Voltage Adjustor</h2>
-<p>Because the motors are effort based instead of voltage based as Romi's batteries drain the motors will behave differently. To account for this Romi contains a voltage divider which is used in conjunction with an ADC pin to measure the current battery voltage. The following code is located in <a class="el" href="main_8py.html">main.py</a> </p><div class="fragment"><div class="line">batPin = ADC(Pin.board.PB0)</div>
-<div class="line">Vbat = batPin.read() * (3.3 / 4095) * (58 / 20) * 1.125</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordflow">if</span> (Vbat &lt;= 6.65):</div>
-<div class="line">    <span class="comment"># If we are low on charge</span></div>
-<div class="line">    print(<span class="stringliteral">&quot;CHARGE BATTERIES&quot;</span>)</div>
-<div class="line">    exit(0)</div>
-</div><!-- fragment --><p>The current voltage is then used to calculate motor effort from the desired velocity. The following code is located in <a class="el" href="_motor_encoder_task_8py.html">MotorEncoderTask.py</a> </p><div class="fragment"><div class="line">self.motor.set_effort(voltage/Vbat * 100)</div>
-</div><!-- fragment --><p> Operating in voltage allows Romi to directly use motor gain for feedforwarding </p><div class="fragment"><div class="line">motorGain = 5.57  <span class="comment"># (rad/s)/V</span></div>
-<div class="line">offset = 2.1  <span class="comment"># Offset to overcome static friction.</span></div>
-<div class="line">self.vel2volt = <span class="keyword">lambda</span> vel: ((vel / motorGain) + offset * (-1 <span class="keywordflow">if</span> vel &lt; 0 <span class="keywordflow">else</span> 1))</div>
-</div><!-- fragment --> </div></div><!-- PageDoc -->
+ <h1><a class="anchor" id="ss_results"></a>
+Results</h1>
+<h2><a class="anchor" id="ss_timeTrial"></a>
+Time Trial</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Trial Number   </th><th class="markdownTableHeadNone">Checkpoint 1 [s]   </th><th class="markdownTableHeadNone">Checkpoint 2 [s]   </th><th class="markdownTableHeadNone">Checkpoint 3 [s]   </th><th class="markdownTableHeadNone">Checkpoint 4 [s]   </th><th class="markdownTableHeadNone">Checkpoint 5 [s]   </th><th class="markdownTableHeadNone">Raw Time [s]   </th><th class="markdownTableHeadNone">Number of Cups   </th><th class="markdownTableHeadNone">Final Time [s]    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">3.06   </td><td class="markdownTableBodyNone">6.03   </td><td class="markdownTableBodyNone">9.20   </td><td class="markdownTableBodyNone">10.83   </td><td class="markdownTableBodyNone">13.07   </td><td class="markdownTableBodyNone">16.90   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">6.90    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">3.07   </td><td class="markdownTableBodyNone">6.03   </td><td class="markdownTableBodyNone">9.17   </td><td class="markdownTableBodyNone">10.93   </td><td class="markdownTableBodyNone">13.13   </td><td class="markdownTableBodyNone">16.80   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">6.80    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">3.10   </td><td class="markdownTableBodyNone">6.17   </td><td class="markdownTableBodyNone">9.27   </td><td class="markdownTableBodyNone">10.90   </td><td class="markdownTableBodyNone">13.17   </td><td class="markdownTableBodyNone">16.80   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">6.80   </td></tr>
+</table>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
 </div><!-- doc-content -->

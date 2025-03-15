@@ -27,13 +27,22 @@ var NAVTREE =
   [ "Mecha_15 (Zippy)", "index.html", [
     [ "Introduction", "index.html#ss_intro", null ],
     [ "Hardware", "index.html#ss_hardware", [
-      [ "Wiring Diagram", "index.html#ss_wiring_diagram", null ]
+      [ "Wiring Diagram", "index.html#ss_wiring_diagram", null ],
+      [ "Nucleo MCU Development Board & “Shoe of Brian”", "index.html#ss_nucleo", null ],
+      [ "Bluetooth module", "index.html#ss_bluetooth", null ],
+      [ "Motor Driver and Power Distribution Board", "index.html#ss_motor_driver", null ],
+      [ "Motors and Encoders", "index.html#ss_motor_encoder", null ],
+      [ "IR Reflectance Sensor Array (“Line Sensor”)", "index.html#ss_linesensor", null ],
+      [ "IMU", "index.html#ss_imu", null ],
+      [ "Bump Sensors", "index.html#ss_bump", null ],
+      [ "Battery Voltage Adjustor", "index.html#ss_battery", null ]
     ] ],
     [ "Overview", "index.html#ss_overview", [
       [ "Tasks", "index.html#ss_tasks", null ],
-      [ "Track", "index.html#ss_track", null ],
-      [ "Bluetooth module", "index.html#ss_bluetooth", null ],
-      [ "Battery Voltage Adjustor", "index.html#ss_battery", null ]
+      [ "Track", "index.html#ss_track", null ]
+    ] ],
+    [ "Results", "index.html#ss_results", [
+      [ "Time Trial", "index.html#ss_timeTrial", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

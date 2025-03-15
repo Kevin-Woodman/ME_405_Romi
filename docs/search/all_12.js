@@ -6,8 +6,10 @@ var searchData=
   ['task_5fshare_2epy_3',['task_share.py',['../task__share_8py.html',1,'']]],
   ['tasklist_4',['TaskList',['../classcotask_1_1_task_list.html',1,'cotask']]],
   ['tasks_5',['Tasks',['../index.html#ss_tasks',1,'']]],
-  ['track_6',['Track',['../index.html#ss_track',1,'']]],
-  ['tracker_7',['Tracker',['../class_tracker_1_1_tracker.html',1,'Tracker']]],
-  ['tracker_2epy_8',['Tracker.py',['../_tracker_8py.html',1,'']]],
-  ['type_5fcode_5fstrings_9',['type_code_strings',['../task__share_8py.html#af5ee68a35f9ce19aef4c4bd4ab7c2679',1,'task_share']]]
+  ['time_20trial_6',['Time Trial',['../index.html#ss_timeTrial',1,'']]],
+  ['track_7',['Track',['../index.html#ss_track',1,'']]],
+  ['tracker_8',['Tracker',['../class_tracker_1_1_tracker.html',1,'Tracker']]],
+  ['tracker_2epy_9',['Tracker.py',['../_tracker_8py.html',1,'']]],
+  ['trial_10',['Time Trial',['../index.html#ss_timeTrial',1,'']]],
+  ['type_5fcode_5fstrings_11',['type_code_strings',['../task__share_8py.html#af5ee68a35f9ce19aef4c4bd4ab7c2679',1,'task_share']]]
 ];
