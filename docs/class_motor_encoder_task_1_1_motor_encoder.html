@@ -134,7 +134,7 @@ Public Attributes</h2></td></tr>
 str&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> = &quot;Right&quot;</td></tr>
 <tr class="separator:a051dc2aaa752b8f0a122d3e6eec9ceb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6b3da5f821edf82580086d67929487b" id="r_af6b3da5f821edf82580086d67929487b"><td class="memItemLeft" align="right" valign="top"><a id="af6b3da5f821edf82580086d67929487b" name="af6b3da5f821edf82580086d67929487b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>vel2volt</b> = lambda vel: ((vel / 5.57) + 2.1 * (-1 if vel &lt; 0 else 1))</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>vel2volt</b> = lambda vel: ((vel / motorGain) + offset * (-1 if vel &lt; 0 else 1))</td></tr>
 <tr class="separator:af6b3da5f821edf82580086d67929487b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac89b37b4e6c52e4c8456831b428a6c54" id="r_ac89b37b4e6c52e4c8456831b428a6c54"><td class="memItemLeft" align="right" valign="top"><a id="ac89b37b4e6c52e4c8456831b428a6c54" name="ac89b37b4e6c52e4c8456831b428a6c54"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>pid</b> = <a class="el" href="class_p_i_d_1_1_p_i_d.html">PID.PID</a>(Kp_m, Ki_m, Kd_m)</td></tr>
@@ -144,7 +144,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> = 0</td></tr
 <tr class="separator:a72d59c538053bb4f53c1c3b2b0846656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/kevin/ME405/ME_405_Romi/src/<b>MotorEncoderTask.py</b></li>
+<li>/Users/kevin/ME405/ME_405_Romi/src/<a class="el" href="_motor_encoder_task_8py.html">MotorEncoderTask.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

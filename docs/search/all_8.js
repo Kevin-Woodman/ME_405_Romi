@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['imu_0',['IMU',['../classimu_1_1_i_m_u.html',1,'imu']]]
+  ['hardware_0',['Hardware',['../index.html#ss_hardware',1,'']]]
 ];

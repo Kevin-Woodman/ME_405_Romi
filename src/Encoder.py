@@ -1,3 +1,5 @@
+## @file Encoder.py
+
 from time import ticks_us, ticks_diff # Use to get dt value in update()
 from pyb import Timer
 import math

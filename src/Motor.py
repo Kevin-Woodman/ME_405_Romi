@@ -3,8 +3,8 @@
 
 from pyb import Pin, Timer
 
-## Implements motor driver
-# This class allows control of the motor in the Gearmotor and Encoder Assembly for Romi/TI-RSLK MAX
+## Implements motor driver.
+# This class allows control of the motor in the Gearmotor and Encoder Assembly for Romi/TI-RSLK MAX.
 # The motor drivers uses separate PWM, direction, and sleep inputs.
 # @b Example:
 # @code
@@ -20,8 +20,8 @@ from pyb import Pin, Timer
 # @endcode
 class Motor:
 
-    ## Initializes the motor object
-    # This function initializes a motor object, configuring the provided pins
+    ## Initializes the motor object.
+    # This function initializes a motor object, configuring the provided pins.
     # @code
     # tm2 = Timer(2, freq=50*100000)
     # motor = Motor((tm2, 1, Pin.board.PA15), Pin.board.PH0, Pin.board.PH1)
@@ -33,10 +33,9 @@ class Motor:
         self.PWM_pin = PWM[0].channel(PWM[1], pin=PWM[2], mode=Timer.PWM, pulse_width_percent=0)
         self.DIR_pin = Pin(DIR, mode=Pin.OUT_PP)
         self.nSLP_pin = Pin(nSLP, mode=Pin.OUT_PP, value=0)
-        pass
 
-    ## Sets the present effort
-    # Sets the present effort requested from the motor based on an input value between -100 and 100
+    ## Sets the present effort.
+    # Sets the present effort requested from the motor based on an input value between -100 and 100.
     # @param effort A float between -100 and 100
     def set_effort(self, effort):
         if effort < 0:
@@ -46,13 +45,13 @@ class Motor:
             self.DIR_pin.low()
             self.PWM_pin.pulse_width_percent(effort)
 
-    ## Enables the motor driver
-    # Enables the motor driver by taking it out of sleep mode into brake mode
+    ## Enables the motor driver.
+    # Enables the motor driver by taking it out of sleep mode into brake mode.
     def enable(self):
         self.PWM_pin.pulse_width_percent(0)
         self.nSLP_pin.high()
 
-    ## Disables the motor driver
-    # Disables the motor driver by taking it into sleep mode
+    ## Disables the motor driver.
+    # Disables the motor driver by taking it into sleep mode.
     def disable(self):
         self.nSLP_pin.low()

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['lightsensor_0',['lightSensor',['../classlight_sensor_1_1light_sensor.html',1,'lightSensor']]],
-  ['lightsensor_2epy_1',['lightSensor.py',['../light_sensor_8py.html',1,'']]]
+  ['imu_0',['IMU',['../classimu_1_1_i_m_u.html',1,'imu']]],
+  ['imu_2epy_1',['imu.py',['../imu_8py.html',1,'']]],
+  ['introduction_2',['Introduction',['../index.html#ss_intro',1,'']]]
 ];

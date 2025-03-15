@@ -109,17 +109,21 @@ $(function(){initNavTree('class_p_i_d_1_1_p_i_d.html',''); initResizable(true); 
   <div class="headertitle"><div class="title">PID.PID Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of a <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> controller.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad68de23dfdfe4909c2994321c2f13e06" id="r_ad68de23dfdfe4909c2994321c2f13e06"><td class="memItemLeft" align="right" valign="top"><a id="ad68de23dfdfe4909c2994321c2f13e06" name="ad68de23dfdfe4909c2994321c2f13e06"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b> (self, kp, ki, kd)</td></tr>
+<tr class="memitem:ad68de23dfdfe4909c2994321c2f13e06" id="r_ad68de23dfdfe4909c2994321c2f13e06"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad68de23dfdfe4909c2994321c2f13e06">__init__</a> (self, kp, ki, kd)</td></tr>
+<tr class="memdesc:ad68de23dfdfe4909c2994321c2f13e06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> object.  <br /></td></tr>
 <tr class="separator:ad68de23dfdfe4909c2994321c2f13e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf06df701b1a4294b0cd24ce209aeafa" id="r_acf06df701b1a4294b0cd24ce209aeafa"><td class="memItemLeft" align="right" valign="top"><a id="acf06df701b1a4294b0cd24ce209aeafa" name="acf06df701b1a4294b0cd24ce209aeafa"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (self, error)</td></tr>
+<tr class="memitem:acf06df701b1a4294b0cd24ce209aeafa" id="r_acf06df701b1a4294b0cd24ce209aeafa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf06df701b1a4294b0cd24ce209aeafa">update</a> (self, error)</td></tr>
+<tr class="memdesc:acf06df701b1a4294b0cd24ce209aeafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> control with a given error Returns an output based on the provided error and the previous errors.  <br /></td></tr>
 <tr class="separator:acf06df701b1a4294b0cd24ce209aeafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a191d3319535c92eacfaa3bf4d1692ebd" id="r_a191d3319535c92eacfaa3bf4d1692ebd"><td class="memItemLeft" align="right" valign="top"><a id="a191d3319535c92eacfaa3bf4d1692ebd" name="a191d3319535c92eacfaa3bf4d1692ebd"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> (self)</td></tr>
+<tr class="memdesc:a191d3319535c92eacfaa3bf4d1692ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the pid object Sets the integral and next derivative to 0. <br /></td></tr>
 <tr class="separator:a191d3319535c92eacfaa3bf4d1692ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -143,8 +147,97 @@ Public Attributes</h2></td></tr>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>sum</b> = 0</td></tr>
 <tr class="separator:a2f0fb602ba840d37960dcf5162aec279"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of a <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> controller. </p>
+<p><a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> output is given by: </p><div class="image">
+<img src="PID.png" alt="" width="50%"/>
+</div>
+<p> <b>Example:</b> </p><div class="fragment"><div class="line"><span class="comment"># Create a PID object</span></div>
+<div class="line">pid = <a class="code hl_namespace" href="namespace_p_i_d.html">PID</a>(1, 0.2, 0)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Update the PID object</span></div>
+<div class="line">pid.update(error)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Reset the PID object</span></div>
+<div class="line">pid.reset()</div>
+<div class="ttc" id="anamespace_p_i_d_html"><div class="ttname"><a href="namespace_p_i_d.html">PID</a></div><div class="ttdef"><b>Definition</b> PID.py:1</div></div>
+</div><!-- fragment --></div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad68de23dfdfe4909c2994321c2f13e06" name="ad68de23dfdfe4909c2994321c2f13e06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad68de23dfdfe4909c2994321c2f13e06">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PID.PID.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>kp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>ki</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>kd</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize a <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> object. </p>
+<p>Initialize the <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> object with provided kp, ki, and kd. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kp</td><td>proportional control </td></tr>
+    <tr><td class="paramname">ki</td><td>integral control </td></tr>
+    <tr><td class="paramname">kd</td><td>derivative control </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="acf06df701b1a4294b0cd24ce209aeafa" name="acf06df701b1a4294b0cd24ce209aeafa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf06df701b1a4294b0cd24ce209aeafa">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PID.PID.update </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update the <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a> control with a given error Returns an output based on the provided error and the previous errors. </p>
+<p>This function takes into account the time between when it was last called. The output is given by:</p><div class="image">
+<img src="PID.png" alt="" width="50%"/>
+</div>
+ <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>The current error to feed into the <a class="el" href="class_p_i_d_1_1_p_i_d.html" title="Implementation of a PID controller.">PID</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/kevin/ME405/ME_405_Romi/src/<b>PID.py</b></li>
+<li>/Users/kevin/ME405/ME_405_Romi/src/<a class="el" href="_p_i_d_8py.html">PID.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

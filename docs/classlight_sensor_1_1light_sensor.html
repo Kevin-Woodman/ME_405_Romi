@@ -111,22 +111,22 @@ $(function(){initNavTree('classlight_sensor_1_1light_sensor.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 
-<p>Implements Light sensor behavior This class implements behavior for each individual IR reflectance sesnor.  
+<p>Implements Light sensor behavior.  
  <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af31781ac9a8aa746dd1e0883242c2cf3" id="r_af31781ac9a8aa746dd1e0883242c2cf3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af31781ac9a8aa746dd1e0883242c2cf3">__init__</a> (self, pin)</td></tr>
-<tr class="memdesc:af31781ac9a8aa746dd1e0883242c2cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a <a class="el" href="classlight_sensor_1_1light_sensor.html" title="Implements Light sensor behavior This class implements behavior for each individual IR reflectance se...">lightSensor</a> object This function initializes a <a class="el" href="classlight_sensor_1_1light_sensor.html" title="Implements Light sensor behavior This class implements behavior for each individual IR reflectance se...">lightSensor</a>, configuring the provided pin to ADC.  <br /></td></tr>
+<tr class="memdesc:af31781ac9a8aa746dd1e0883242c2cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a <a class="el" href="classlight_sensor_1_1light_sensor.html" title="Implements Light sensor behavior.">lightSensor</a> object.  <br /></td></tr>
 <tr class="separator:af31781ac9a8aa746dd1e0883242c2cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7891c7b5dc0dd0f1016c724adebaf9c5" id="r_a7891c7b5dc0dd0f1016c724adebaf9c5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7891c7b5dc0dd0f1016c724adebaf9c5">read</a> (self)</td></tr>
-<tr class="memdesc:a7891c7b5dc0dd0f1016c724adebaf9c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the sensor's value This function reads the raw value off of the ADC pin and normalizes it based on the set white and black levels.  <br /></td></tr>
+<tr class="memdesc:a7891c7b5dc0dd0f1016c724adebaf9c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the sensor's value.  <br /></td></tr>
 <tr class="separator:a7891c7b5dc0dd0f1016c724adebaf9c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0771ad41827fdf50b6174edd42a302f3" id="r_a0771ad41827fdf50b6174edd42a302f3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0771ad41827fdf50b6174edd42a302f3">setWhiteLevel</a> (self, whiteLevel=None)</td></tr>
-<tr class="memdesc:a0771ad41827fdf50b6174edd42a302f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the sensor's white level This function sets the white level.  <br /></td></tr>
+<tr class="memdesc:a0771ad41827fdf50b6174edd42a302f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the sensor's white level.  <br /></td></tr>
 <tr class="separator:a0771ad41827fdf50b6174edd42a302f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a499766adcc89a89aa2d880833067e6" id="r_a5a499766adcc89a89aa2d880833067e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a499766adcc89a89aa2d880833067e6">setBlackLevel</a> (self, blackLevel=None)</td></tr>
-<tr class="memdesc:a5a499766adcc89a89aa2d880833067e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the sensor's black level This function sets the black level.  <br /></td></tr>
+<tr class="memdesc:a5a499766adcc89a89aa2d880833067e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the sensor's black level.  <br /></td></tr>
 <tr class="separator:a5a499766adcc89a89aa2d880833067e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -143,14 +143,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>blackLevel</b> = -1</t
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a22c72cb681304d59a474d87f0ab63461" id="r_a22c72cb681304d59a474d87f0ab63461"><td class="memItemLeft" align="right" valign="top"><a id="a22c72cb681304d59a474d87f0ab63461" name="a22c72cb681304d59a474d87f0ab63461"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>_readRaw</b> (self)</td></tr>
-<tr class="memdesc:a22c72cb681304d59a474d87f0ab63461"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the sensor's ADC pin This function returns the raw value off of the ADC pin. <br /></td></tr>
+<tr class="memitem:a22c72cb681304d59a474d87f0ab63461" id="r_a22c72cb681304d59a474d87f0ab63461"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22c72cb681304d59a474d87f0ab63461">_readRaw</a> (self)</td></tr>
+<tr class="memdesc:a22c72cb681304d59a474d87f0ab63461"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the sensor's ADC pin.  <br /></td></tr>
 <tr class="separator:a22c72cb681304d59a474d87f0ab63461"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implements Light sensor behavior This class implements behavior for each individual IR reflectance sesnor. </p>
-<p>Reading the sensor value and reconfigureing it to allow for normalization of the output. <b>Example:</b> </p><div class="fragment"><div class="line">sensor = <a class="code hl_namespace" href="namespacelight_sensor.html">lightSensor</a>(pyb.Pin.Board.A5)</div>
+<div class="textblock"><p>Implements Light sensor behavior. </p>
+<p>This class implements behavior for each individual IR reflectance sensor. Reading the sensor value and reconfiguring it to allow for normalization of the output. <b>Example:</b> </p><div class="fragment"><div class="line">sensor = <a class="code hl_namespace" href="namespacelight_sensor.html">lightSensor</a>(pyb.Pin.Board.A5)</div>
 <div class="ttc" id="anamespacelight_sensor_html"><div class="ttname"><a href="namespacelight_sensor.html">lightSensor</a></div><div class="ttdef"><b>Definition</b> lightSensor.py:1</div></div>
 </div><!-- fragment --></div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af31781ac9a8aa746dd1e0883242c2cf3" name="af31781ac9a8aa746dd1e0883242c2cf3"></a>
@@ -172,8 +171,8 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize a <a class="el" href="classlight_sensor_1_1light_sensor.html" title="Implements Light sensor behavior This class implements behavior for each individual IR reflectance se...">lightSensor</a> object This function initializes a <a class="el" href="classlight_sensor_1_1light_sensor.html" title="Implements Light sensor behavior This class implements behavior for each individual IR reflectance se...">lightSensor</a>, configuring the provided pin to ADC. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Initialize a <a class="el" href="classlight_sensor_1_1light_sensor.html" title="Implements Light sensor behavior.">lightSensor</a> object. </p>
+<p>This function initializes a <a class="el" href="classlight_sensor_1_1light_sensor.html" title="Implements Light sensor behavior.">lightSensor</a>, configuring the provided pin to ADC </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pin</td><td>The pin that the light sensor is connected to. </td></tr>
   </table>
@@ -183,6 +182,34 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a22c72cb681304d59a474d87f0ab63461" name="a22c72cb681304d59a474d87f0ab63461"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22c72cb681304d59a474d87f0ab63461">&#9670;&#160;</a></span>_readRaw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">lightSensor.lightSensor._readRaw </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Read the sensor's ADC pin. </p>
+<p>This function returns the raw value off of the ADC pin </p>
+
+</div>
+</div>
 <a id="a7891c7b5dc0dd0f1016c724adebaf9c5" name="a7891c7b5dc0dd0f1016c724adebaf9c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7891c7b5dc0dd0f1016c724adebaf9c5">&#9670;&#160;</a></span>read()</h2>
 
@@ -198,8 +225,8 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Read the sensor's value This function reads the raw value off of the ADC pin and normalizes it based on the set white and black levels. </p>
-<p>If the white or black levels are set they default to 0 and 4,096 respectivly </p>
+<p>Read the sensor's value. </p>
+<p>This function reads the raw value off of the ADC pin and normalizes it based on the set white and black levels. If the white or black levels are set they default to 0 and 4,096 respectivly </p>
 
 </div>
 </div>
@@ -222,8 +249,8 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the sensor's black level This function sets the black level. </p>
-<p>If a black level is not provide the sensor reads it's current value to serve as the black level. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Set the sensor's black level. </p>
+<p>This function sets the black level. If a black level is not provide the sensor reads it's current value to serve as the black level. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">blacklevel</td><td>desired blackLevel or None for automatic </td></tr>
   </table>
@@ -251,8 +278,8 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the sensor's white level This function sets the white level. </p>
-<p>If a white level is not provide the sensor reads it's current value to serve as the white level. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Set the sensor's white level. </p>
+<p>This function sets the white level. If a white level is not provide the sensor reads it's current value to serve as the white level. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">whiteLevel</td><td>desired whiteLevel or None for automatic </td></tr>
   </table>

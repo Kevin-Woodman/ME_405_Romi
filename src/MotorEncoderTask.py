@@ -1,3 +1,5 @@
+## @file MotorEncoderTask.py
+
 from pyb import Pin, Timer, USB_VCP, ADC
 import task_share
 import cotask
@@ -24,7 +26,10 @@ class MotorEncoder():
         else:
             raise ValueError("Class takes 'R' or 'L' as parameters")
 
-        self.vel2volt = lambda vel: ((vel / 5.57) + 2.1 * (-1 if vel < 0 else 1))
+
+        motorGain = 5.57 # (rad/s)/V
+        offset = 2.1 # Offset to overcome static friction.
+        self.vel2volt = lambda vel: ((vel / motorGain) + offset * (-1 if vel < 0 else 1))
 
         # (DeltaVelocity [rad/s] ----> DeltaVoltage [V])
         Kp_m = 0.5

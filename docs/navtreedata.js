@@ -25,6 +25,16 @@
 var NAVTREE =
 [
   [ "Mecha_15 (Zippy)", "index.html", [
+    [ "Introduction", "index.html#ss_intro", null ],
+    [ "Hardware", "index.html#ss_hardware", [
+      [ "Wiring Diagram", "index.html#ss_wiring_diagram", null ]
+    ] ],
+    [ "Overview", "index.html#ss_overview", [
+      [ "Tasks", "index.html#ss_tasks", null ],
+      [ "Track", "index.html#ss_track", null ],
+      [ "Bluetooth module", "index.html#ss_bluetooth", null ],
+      [ "Battery Voltage Adjustor", "index.html#ss_battery", null ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -43,7 +53,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_motor_8py.html"
+"_controller_8py.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['motor_2epy_0',['Motor.py',['../_motor_8py.html',1,'']]]
+  ['imu_2epy_0',['imu.py',['../imu_8py.html',1,'']]]
 ];

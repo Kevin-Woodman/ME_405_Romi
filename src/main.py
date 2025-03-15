@@ -1,3 +1,17 @@
+## @file main.py
+# This file contains the main program which Romi will run on startup and reset. It includes 4 tasks.
+# Task Name  | Task Function | Task Priority | Task Period [us]
+# ------------- | ------------- | ------------- | -------------
+# Control  | Controller.Controller.task | 2 | 10
+# Tracker  | Tracker.Tracker.task | 1 | 20
+# DriveR  | MotorEncoderTask.MotorEncoder.task | 3 | 5
+# DriveL  | MotorEncoderTask.MotorEncoder.task| 3 | 5
+# This file also contains interrupt configuration to allow the bump sensors to turn Romi on or off.
+# @code
+# bumpSensors = [Pin.board.PB11, Pin.board.PB14, Pin.board.PB15]
+# for bump in bumpSensors:
+#     pyb.ExtInt(bump, pyb.ExtInt.IRQ_FALLING, Pin.PULL_UP, lambda b: enabled.put(0))
+# @endcode
 
 from pyb import Pin, Timer, USB_VCP, ADC
 import task_share
@@ -41,14 +55,11 @@ if __name__ == '__main__':
     encoderResetR =  task_share.Share('B', thread_protect=False, name="resetR")
 
     # User_task = cotask.Task(User, name="User", priority=1, period=100, profile=True, trace=False, shares=(enabled))
-    Control_task = cotask.Task(controller.task, name="User", priority=2, period=10, profile=True, trace=False,
-                            shares=(enabled, effortL, effortR, sectionShare))
+    Control_task = cotask.Task(controller.task, name="Control", priority=2, period=10, profile=True, trace=False, shares=(enabled, effortL, effortR, sectionShare))
 
-    MotorR_task = cotask.Task(motorR.task, name="Drive", priority=3, period=5, profile=True, trace=False,
-                             shares=(effortR, posR, encoderResetR))
+    MotorR_task = cotask.Task(motorR.task, name="DriveR", priority=3, period=5, profile=True, trace=False, shares=(effortR, posR, encoderResetR))
 
-    MotorL_task = cotask.Task(motorL.task, name="Drive", priority=3, period=5, profile=True, trace=False,
-                              shares=(effortL, posL, encoderResetL))
+    MotorL_task = cotask.Task(motorL.task, name="DriveL", priority=3, period=5, profile=True, trace=False, shares=(effortL, posL, encoderResetL))
 
     Tracker_task = cotask.Task(tracker.task, name="Tracker", priority=1, period = 20, shares= (enabled, sectionShare, posL, posR, encoderResetL, encoderResetR))
 
@@ -64,7 +75,6 @@ if __name__ == '__main__':
     pyb.ExtInt(Pin.cpu.C13, pyb.ExtInt.IRQ_FALLING, Pin.PULL_NONE, lambda b: enabled.put(0 if enabled.get() else 1))
 
     bumpSensors = [Pin.board.PB11,Pin.board.PB14,Pin.board.PB15]
-
     for bump in bumpSensors:
         pyb.ExtInt(bump, pyb.ExtInt.IRQ_FALLING, Pin.PULL_UP, lambda b: enabled.put(0))
 

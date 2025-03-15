@@ -23,7 +23,7 @@ var annotated_dup =
       [ "MotorEncoder", "class_motor_encoder_task_1_1_motor_encoder.html", null ]
     ] ],
     [ "PID", null, [
-      [ "PID", "class_p_i_d_1_1_p_i_d.html", null ]
+      [ "PID", "class_p_i_d_1_1_p_i_d.html", "class_p_i_d_1_1_p_i_d" ]
     ] ],
     [ "sensorArray", null, [
       [ "sensorArray", "classsensor_array_1_1sensor_array.html", "classsensor_array_1_1sensor_array" ]

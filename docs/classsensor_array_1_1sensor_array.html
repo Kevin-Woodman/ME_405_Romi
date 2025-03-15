@@ -109,17 +109,20 @@ $(function(){initNavTree('classsensor_array_1_1sensor_array.html',''); initResiz
   <div class="headertitle"><div class="title">sensorArray.sensorArray Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements Light sensor array behavior.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae9b7abf138858e7fdad6bd2c2dbed312" id="r_ae9b7abf138858e7fdad6bd2c2dbed312"><td class="memItemLeft" align="right" valign="top"><a id="ae9b7abf138858e7fdad6bd2c2dbed312" name="ae9b7abf138858e7fdad6bd2c2dbed312"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b> (self, sensorPins, lightPins)</td></tr>
+<tr class="memitem:ae9b7abf138858e7fdad6bd2c2dbed312" id="r_ae9b7abf138858e7fdad6bd2c2dbed312"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9b7abf138858e7fdad6bd2c2dbed312">__init__</a> (self, sensorPins, lightPins)</td></tr>
+<tr class="memdesc:ae9b7abf138858e7fdad6bd2c2dbed312"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a <a class="el" href="classsensor_array_1_1sensor_array.html" title="Implements Light sensor array behavior.">sensorArray</a> object.  <br /></td></tr>
 <tr class="separator:ae9b7abf138858e7fdad6bd2c2dbed312"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e8e099bda2052d85ea4c12ab7f03bd8" id="r_a0e8e099bda2052d85ea4c12ab7f03bd8"><td class="memItemLeft" align="right" valign="top"><a id="a0e8e099bda2052d85ea4c12ab7f03bd8" name="a0e8e099bda2052d85ea4c12ab7f03bd8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>configAll</b> (self, whiteList=None, blackList=None)</td></tr>
+<tr class="memitem:a0e8e099bda2052d85ea4c12ab7f03bd8" id="r_a0e8e099bda2052d85ea4c12ab7f03bd8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e8e099bda2052d85ea4c12ab7f03bd8">configAll</a> (self, whiteList=None, blackList=None)</td></tr>
+<tr class="memdesc:a0e8e099bda2052d85ea4c12ab7f03bd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures all of the sensors This function configures all of the sensor's white and black levels either automatically or manually.  <br /></td></tr>
 <tr class="separator:a0e8e099bda2052d85ea4c12ab7f03bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fb37acce3e5f2e1f544527eadbb7843" id="r_a6fb37acce3e5f2e1f544527eadbb7843"><td class="memItemLeft" align="right" valign="top"><a id="a6fb37acce3e5f2e1f544527eadbb7843" name="a6fb37acce3e5f2e1f544527eadbb7843"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>getCentroid</b> (self)</td></tr>
+<tr class="memitem:a6fb37acce3e5f2e1f544527eadbb7843" id="r_a6fb37acce3e5f2e1f544527eadbb7843"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fb37acce3e5f2e1f544527eadbb7843">getCentroid</a> (self)</td></tr>
+<tr class="memdesc:a6fb37acce3e5f2e1f544527eadbb7843"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the centroid of the line sensor's reading The centroid of the line is calculated by taking a weighted average of each sensor's weighted by its index.  <br /></td></tr>
 <tr class="separator:a6fb37acce3e5f2e1f544527eadbb7843"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ea9e78a517536fab593b761d20880b8" id="r_a0ea9e78a517536fab593b761d20880b8"><td class="memItemLeft" align="right" valign="top"><a id="a0ea9e78a517536fab593b761d20880b8" name="a0ea9e78a517536fab593b761d20880b8"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>enable</b> (self)</td></tr>
@@ -139,6 +142,125 @@ list&#160;</td><td class="memItemRight" valign="bottom"><b>sensors</b> = []</td>
 list&#160;</td><td class="memItemRight" valign="bottom"><b>lights</b> = [pyb.Pin(pin, pyb.Pin.OUT_PP) for pin in lightPins]</td></tr>
 <tr class="separator:ac0bd7d4142efd2477f789be1b7060cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements Light sensor array behavior. </p>
+<p>This class implements behavior for the whole IR reflectance sensor. Calculating line thickness and centroid of the line. It also allows reconfiguring of every individual light sensor and control of the IR emitters <b>Example:</b> </p><div class="fragment"><div class="line"><span class="comment"># Line Sensor Configuration</span></div>
+<div class="line">sensorPins = [Pin.board.PB1, Pin.board.PC5, Pin.board.PC0, Pin.board.PA0, Pin.board.PC1, Pin.board.PC4, <span class="keywordtype">None</span>, Pin.board.PA7, Pin.board.PA4, Pin.board.PA6, Pin.board.PA1, Pin.board.PC2, Pin.board.PC3]</div>
+<div class="line">lightPins = [Pin.board.PC10, Pin.board.PC11]</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Create the sensor object</span></div>
+<div class="line">sensor = <a class="code hl_namespace" href="namespacesensor_array.html">sensorArray</a>(sensorPins, lightPins)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Enable the IR emitters</span></div>
+<div class="line">sensor.enable()</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Auto configuration process</span></div>
+<div class="line">sensor.configAll()</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Manual configuration process</span></div>
+<div class="line">whiteList = [2548, 821, 604, 520, 288, 303, 0, 328, 386, 310, 1027, 494, 1934]</div>
+<div class="line">blackList = [3479, 2297, 2470, 2542, 1974, 1871, 0, 1933, 2607, 1908, 3040, 2648, 3454]</div>
+<div class="line"> </div>
+<div class="line">sensor.configAll(whiteList, blackList)</div>
+<div class="ttc" id="anamespacesensor_array_html"><div class="ttname"><a href="namespacesensor_array.html">sensorArray</a></div><div class="ttdef"><b>Definition</b> sensorArray.py:1</div></div>
+</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae9b7abf138858e7fdad6bd2c2dbed312" name="ae9b7abf138858e7fdad6bd2c2dbed312"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9b7abf138858e7fdad6bd2c2dbed312">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sensorArray.sensorArray.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sensorPins</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>lightPins</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize a <a class="el" href="classsensor_array_1_1sensor_array.html" title="Implements Light sensor array behavior.">sensorArray</a> object. </p>
+<p>This function initializes a <a class="el" href="classsensor_array_1_1sensor_array.html" title="Implements Light sensor array behavior.">sensorArray</a> with the given sensor pins and emitter pins. Configures emitter pins to push-pull output </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sensorPins</td><td>list of pins to initialize sensors to. Can contain None if you are missing sensor index. Must be ADC compatible pins </td></tr>
+    <tr><td class="paramname">lightPins</td><td>list of pins for the IR emitters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0e8e099bda2052d85ea4c12ab7f03bd8" name="a0e8e099bda2052d85ea4c12ab7f03bd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e8e099bda2052d85ea4c12ab7f03bd8">&#9670;&#160;</a></span>configAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sensorArray.sensorArray.configAll </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>whiteList</em></span><span class="paramdefsep"> = </span><span class="paramdefval">None</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>blackList</em></span><span class="paramdefsep"> = </span><span class="paramdefval">None</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures all of the sensors This function configures all of the sensor's white and black levels either automatically or manually. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">whiteList</td><td>if a whiteList is not provided the sensor will automatically calibrate when 'enter' is hit </td></tr>
+    <tr><td class="paramname">blackList</td><td>if a blackList is not provided the sensor will automatically calibrate when 'enter' is hit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6fb37acce3e5f2e1f544527eadbb7843" name="a6fb37acce3e5f2e1f544527eadbb7843"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fb37acce3e5f2e1f544527eadbb7843">&#9670;&#160;</a></span>getCentroid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sensorArray.sensorArray.getCentroid </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the centroid of the line sensor's reading The centroid of the line is calculated by taking a weighted average of each sensor's weighted by its index. </p>
+<div class="image">
+<img src="Sumval.png" alt="" width="30%"/>
+</div>
+ <div class="image">
+<img src="centroid.png" alt="" width="40%"/>
+</div>
+<p> This function also returns a thickness value: 0 if sumVal &lt;= 1.0, 2 if sumVal &gt;= 6.5, or 1 otherwise. This indicates the thickness of the line. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/kevin/ME405/ME_405_Romi/src/<b>sensorArray.py</b></li>
 </ul>

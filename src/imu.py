@@ -1,3 +1,5 @@
+## @file imu.py
+
 from pyb import I2C
 from struct import unpack
 

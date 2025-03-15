@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['motor_0',['Motor',['../class_motor_1_1_motor.html',1,'Motor']]],
-  ['motor_2epy_1',['Motor.py',['../_motor_8py.html',1,'']]],
-  ['motorencoder_2',['MotorEncoder',['../class_motor_encoder_task_1_1_motor_encoder.html',1,'MotorEncoderTask']]]
+  ['lightsensor_0',['lightSensor',['../classlight_sensor_1_1light_sensor.html',1,'lightSensor']]],
+  ['lightsensor_2epy_1',['lightSensor.py',['../light_sensor_8py.html',1,'']]]
 ];

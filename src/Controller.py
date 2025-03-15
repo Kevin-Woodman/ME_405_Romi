@@ -1,3 +1,5 @@
+## @file Controller.py
+
 from imu import IMU
 import sensorArray
 import PID
@@ -31,7 +33,6 @@ class controller:
         blackList =  [3479, 2297, 2470, 2542, 1974, 1871,0,  1933, 2607, 1908, 3040, 2648, 3454]
 
         self.sensor.configAll(whiteList,blackList)
-        #self.sensor.configAll()
 
         # LINE SENSOR PID CONTROLLER
         # Setpoint

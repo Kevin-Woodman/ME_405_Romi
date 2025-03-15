@@ -110,24 +110,22 @@ $(function(){initNavTree('class_motor_1_1_motor.html',''); initResizable(true); 
 </div><!--header-->
 <div class="contents">
 
-<p>Implements motor driver This class allows control of the motor in the Gearmotor and Encoder Assembly for Romi/TI-RSLK MAX The motor drivers uses separate PWM, direction, and sleep inputs.  
+<p>Implements motor driver.  
  <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0a6b32677dfbbdbe40e6aecb6eeac62b" id="r_a0a6b32677dfbbdbe40e6aecb6eeac62b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a6b32677dfbbdbe40e6aecb6eeac62b">__init__</a> (self, PWM, DIR, nSLP)</td></tr>
-<tr class="memdesc:a0a6b32677dfbbdbe40e6aecb6eeac62b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the motor object This function initializes a motor object, configuring the provided pins.  <br /></td></tr>
+<tr class="memdesc:a0a6b32677dfbbdbe40e6aecb6eeac62b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the motor object.  <br /></td></tr>
 <tr class="separator:a0a6b32677dfbbdbe40e6aecb6eeac62b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30870f27a3d39a2a0c544292445f9d46" id="r_a30870f27a3d39a2a0c544292445f9d46"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30870f27a3d39a2a0c544292445f9d46">set_effort</a> (self, effort)</td></tr>
-<tr class="memdesc:a30870f27a3d39a2a0c544292445f9d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the present effort Sets the present effort requested from the motor based on an input value between -100 and 100.  <br /></td></tr>
+<tr class="memdesc:a30870f27a3d39a2a0c544292445f9d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the present effort.  <br /></td></tr>
 <tr class="separator:a30870f27a3d39a2a0c544292445f9d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dd93a3dedf447781a501c90cf853139" id="r_a9dd93a3dedf447781a501c90cf853139"><td class="memItemLeft" align="right" valign="top"><a id="a9dd93a3dedf447781a501c90cf853139" name="a9dd93a3dedf447781a501c90cf853139"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>enable</b> (self)</td></tr>
-<tr class="memdesc:a9dd93a3dedf447781a501c90cf853139"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the motor driver Enables the motor driver by taking it out of sleep mode into brake mode. <br /></td></tr>
+<tr class="memitem:a9dd93a3dedf447781a501c90cf853139" id="r_a9dd93a3dedf447781a501c90cf853139"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dd93a3dedf447781a501c90cf853139">enable</a> (self)</td></tr>
+<tr class="memdesc:a9dd93a3dedf447781a501c90cf853139"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the motor driver.  <br /></td></tr>
 <tr class="separator:a9dd93a3dedf447781a501c90cf853139"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd3d4107db4e3a2737529b42ab65d684" id="r_abd3d4107db4e3a2737529b42ab65d684"><td class="memItemLeft" align="right" valign="top"><a id="abd3d4107db4e3a2737529b42ab65d684" name="abd3d4107db4e3a2737529b42ab65d684"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>disable</b> (self)</td></tr>
-<tr class="memdesc:abd3d4107db4e3a2737529b42ab65d684"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the motor driver Disables the motor driver by taking it into sleep mode. <br /></td></tr>
+<tr class="memitem:abd3d4107db4e3a2737529b42ab65d684" id="r_abd3d4107db4e3a2737529b42ab65d684"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd3d4107db4e3a2737529b42ab65d684">disable</a> (self)</td></tr>
+<tr class="memdesc:abd3d4107db4e3a2737529b42ab65d684"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the motor driver.  <br /></td></tr>
 <tr class="separator:abd3d4107db4e3a2737529b42ab65d684"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -143,8 +141,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a8db169519cda9dd417625f3a7fbd9f7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implements motor driver This class allows control of the motor in the Gearmotor and Encoder Assembly for Romi/TI-RSLK MAX The motor drivers uses separate PWM, direction, and sleep inputs. </p>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">tm2 = Timer(2, freq=50*100000)</div>
+<div class="textblock"><p>Implements motor driver. </p>
+<p>This class allows control of the motor in the Gearmotor and Encoder Assembly for Romi/TI-RSLK MAX. The motor drivers uses separate PWM, direction, and sleep inputs. <b>Example:</b> </p><div class="fragment"><div class="line">tm2 = Timer(2, freq=50*100000)</div>
 <div class="line"><span class="comment"># Create the motor object</span></div>
 <div class="line">motor = <a class="code hl_namespace" href="namespace_motor.html">Motor</a>((tm2, 1, Pin.board.PA15), Pin.board.PH0, Pin.board.PH1)</div>
 <div class="line"><span class="comment"># Enable the motor object</span></div>
@@ -184,8 +182,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes the motor object This function initializes a motor object, configuring the provided pins. </p>
-<div class="fragment"><div class="line">tm2 = Timer(2, freq=50*100000)</div>
+<p>Initializes the motor object. </p>
+<p>This function initializes a motor object, configuring the provided pins. </p><div class="fragment"><div class="line">tm2 = Timer(2, freq=50*100000)</div>
 <div class="line">motor = <a class="code hl_namespace" href="namespace_motor.html">Motor</a>((tm2, 1, Pin.board.PA15), Pin.board.PH0, Pin.board.PH1)</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -199,6 +197,46 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="abd3d4107db4e3a2737529b42ab65d684" name="abd3d4107db4e3a2737529b42ab65d684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd3d4107db4e3a2737529b42ab65d684">&#9670;&#160;</a></span>disable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Motor.Motor.disable </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disables the motor driver. </p>
+<p>Disables the motor driver by taking it into sleep mode. </p>
+
+</div>
+</div>
+<a id="a9dd93a3dedf447781a501c90cf853139" name="a9dd93a3dedf447781a501c90cf853139"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dd93a3dedf447781a501c90cf853139">&#9670;&#160;</a></span>enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Motor.Motor.enable </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables the motor driver. </p>
+<p>Enables the motor driver by taking it out of sleep mode into brake mode. </p>
+
+</div>
+</div>
 <a id="a30870f27a3d39a2a0c544292445f9d46" name="a30870f27a3d39a2a0c544292445f9d46"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a30870f27a3d39a2a0c544292445f9d46">&#9670;&#160;</a></span>set_effort()</h2>
 
@@ -218,8 +256,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the present effort Sets the present effort requested from the motor based on an input value between -100 and 100. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Sets the present effort. </p>
+<p>Sets the present effort requested from the motor based on an input value between -100 and 100. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">effort</td><td>A float between -100 and 100 </td></tr>
   </table>
