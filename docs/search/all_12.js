@@ -1,15 +1,20 @@
 var searchData=
 [
-  ['task_0',['Task',['../classcotask_1_1_task.html',1,'cotask']]],
-  ['task_1',['task',['../class_controller_1_1controller.html#aa8b7a9b82fa3324603c34dd2c156921e',1,'Controller.controller.task()'],['../class_motor_encoder_task_1_1_motor_encoder.html#aeb15e1c948fc972b95dcb391b7631f59',1,'MotorEncoderTask.MotorEncoder.task()'],['../class_tracker_1_1_tracker.html#a3bff04c7937a927d0e38feafbaef5b62',1,'Tracker.Tracker.task()']]],
-  ['task_5flist_2',['task_list',['../cotask_8py.html#ae54e25f8d14958f642bcc22ddeb6c56f',1,'cotask']]],
-  ['task_5fshare_2epy_3',['task_share.py',['../task__share_8py.html',1,'']]],
-  ['tasklist_4',['TaskList',['../classcotask_1_1_task_list.html',1,'cotask']]],
-  ['tasks_5',['Tasks',['../index.html#ss_tasks',1,'']]],
-  ['time_20trial_6',['Time Trial',['../index.html#ss_timeTrial',1,'']]],
-  ['track_7',['Track',['../index.html#ss_track',1,'']]],
-  ['tracker_8',['Tracker',['../class_tracker_1_1_tracker.html',1,'Tracker']]],
-  ['tracker_2epy_9',['Tracker.py',['../_tracker_8py.html',1,'']]],
-  ['trial_10',['Time Trial',['../index.html#ss_timeTrial',1,'']]],
-  ['type_5fcode_5fstrings_11',['type_code_strings',['../task__share_8py.html#af5ee68a35f9ce19aef4c4bd4ab7c2679',1,'task_share']]]
+  ['schedule_0',['schedule',['../classcotask_1_1_task.html#af60def0ed4a1bc5fec32f3cf8b8a90c8',1,'cotask::Task']]],
+  ['sensor”_1',['IR Reflectance Sensor Array (“Line Sensor”)',['../index.html#ss_linesensor',1,'']]],
+  ['sensor_20array_20“line_20sensor”_2',['IR Reflectance Sensor Array (“Line Sensor”)',['../index.html#ss_linesensor',1,'']]],
+  ['sensorarray_3',['sensorArray',['../classsensor_array_1_1sensor_array.html',1,'sensorArray']]],
+  ['sensors_4',['Bump Sensors',['../index.html#ss_bump',1,'']]],
+  ['ser_5fnum_5',['ser_num',['../classtask__share_1_1_queue.html#a6f9d87b116eb16dba0867d3746af9f5f',1,'task_share.Queue.ser_num'],['../classtask__share_1_1_share.html#a2e8df029af46fbfd44ef0c2e7e8c7af6',1,'task_share.Share.ser_num']]],
+  ['servo_20and_20arm_6',['Servo and Arm',['../index.html#ss_servo',1,'']]],
+  ['set_5feffort_7',['set_effort',['../class_motor_1_1_motor.html#a30870f27a3d39a2a0c544292445f9d46',1,'Motor::Motor']]],
+  ['set_5fperiod_8',['set_period',['../classcotask_1_1_task.html#a0fcee5beb8b2fed77e5125c58ba35c26',1,'cotask::Task']]],
+  ['setblacklevel_9',['setBlackLevel',['../classlight_sensor_1_1light_sensor.html#a5a499766adcc89a89aa2d880833067e6',1,'lightSensor::lightSensor']]],
+  ['setwhitelevel_10',['setWhiteLevel',['../classlight_sensor_1_1light_sensor.html#a0771ad41827fdf50b6174edd42a302f3',1,'lightSensor::lightSensor']]],
+  ['share_11',['Share',['../classtask__share_1_1_share.html',1,'task_share']]],
+  ['share_5flist_12',['share_list',['../task__share_8py.html#a75818e5b662453e3723d0f234c85e519',1,'task_share']]],
+  ['show_5fall_13',['show_all',['../task__share_8py.html#ad6aea1db68be1a10f72039a5ac9e9dd4',1,'task_share']]],
+  ['software_14',['Software',['../index.html#ss_software',1,'']]],
+  ['strategy_15',['Game Track Strategy',['../index.html#ss_gameTrack',1,'']]],
+  ['structure_16',['Code Structure',['../index.html#ss_codeStruct',1,'']]]
 ];

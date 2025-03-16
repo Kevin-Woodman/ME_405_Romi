@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['vel2volt_0',['vel2volt',['../class_motor_encoder_task_1_1_motor_encoder.html#af6b3da5f821edf82580086d67929487b',1,'MotorEncoderTask::MotorEncoder']]],
-  ['voltage_20adjustor_1',['Battery Voltage Adjustor',['../index.html#ss_battery',1,'']]]
+  ['update_0',['update',['../class_encoder_1_1_encoder.html#a3edf3fe66f8af2e5667a0903452fa49d',1,'Encoder.Encoder.update()'],['../class_p_i_d_1_1_p_i_d.html#acf06df701b1a4294b0cd24ce209aeafa',1,'PID.PID.update()']]]
 ];

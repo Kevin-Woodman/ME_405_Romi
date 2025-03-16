@@ -1,16 +1,13 @@
 var searchData=
 [
-  ['schedule_0',['schedule',['../classcotask_1_1_task.html#af60def0ed4a1bc5fec32f3cf8b8a90c8',1,'cotask::Task']]],
-  ['sensor”_1',['IR Reflectance Sensor Array (“Line Sensor”)',['../index.html#ss_linesensor',1,'']]],
-  ['sensor_20array_20“line_20sensor”_2',['IR Reflectance Sensor Array (“Line Sensor”)',['../index.html#ss_linesensor',1,'']]],
-  ['sensorarray_3',['sensorArray',['../classsensor_array_1_1sensor_array.html',1,'sensorArray']]],
-  ['sensors_4',['Bump Sensors',['../index.html#ss_bump',1,'']]],
-  ['ser_5fnum_5',['ser_num',['../classtask__share_1_1_queue.html#a6f9d87b116eb16dba0867d3746af9f5f',1,'task_share.Queue.ser_num'],['../classtask__share_1_1_share.html#a2e8df029af46fbfd44ef0c2e7e8c7af6',1,'task_share.Share.ser_num']]],
-  ['set_5feffort_6',['set_effort',['../class_motor_1_1_motor.html#a30870f27a3d39a2a0c544292445f9d46',1,'Motor::Motor']]],
-  ['set_5fperiod_7',['set_period',['../classcotask_1_1_task.html#a0fcee5beb8b2fed77e5125c58ba35c26',1,'cotask::Task']]],
-  ['setblacklevel_8',['setBlackLevel',['../classlight_sensor_1_1light_sensor.html#a5a499766adcc89a89aa2d880833067e6',1,'lightSensor::lightSensor']]],
-  ['setwhitelevel_9',['setWhiteLevel',['../classlight_sensor_1_1light_sensor.html#a0771ad41827fdf50b6174edd42a302f3',1,'lightSensor::lightSensor']]],
-  ['share_10',['Share',['../classtask__share_1_1_share.html',1,'task_share']]],
-  ['share_5flist_11',['share_list',['../task__share_8py.html#a75818e5b662453e3723d0f234c85e519',1,'task_share']]],
-  ['show_5fall_12',['show_all',['../task__share_8py.html#ad6aea1db68be1a10f72039a5ac9e9dd4',1,'task_share']]]
+  ['read_0',['read',['../classlight_sensor_1_1light_sensor.html#a7891c7b5dc0dd0f1016c724adebaf9c5',1,'lightSensor::lightSensor']]],
+  ['readangvel_1',['readAngVel',['../classimu_1_1_i_m_u.html#a8c669c8dccecf6446f729a90d4ce6a79',1,'imu::IMU']]],
+  ['readcoeffs_2',['readCoeffs',['../classimu_1_1_i_m_u.html#a0e1f0afdc1f176fc7ff6e69b04b840b9',1,'imu::IMU']]],
+  ['readeuler_3',['readEuler',['../classimu_1_1_i_m_u.html#a2a11796bb9c064a2d26764b014176e0a',1,'imu::IMU']]],
+  ['ready_4',['ready',['../classcotask_1_1_task.html#a6102bc35d7cb1ce292abc85d4ddc23e1',1,'cotask::Task']]],
+  ['reflectance_20sensor_20array_20“line_20sensor”_5',['IR Reflectance Sensor Array (“Line Sensor”)',['../index.html#ss_linesensor',1,'']]],
+  ['reset_6',['reset',['../class_p_i_d_1_1_p_i_d.html#a191d3319535c92eacfaa3bf4d1692ebd',1,'PID::PID']]],
+  ['reset_5fprofile_7',['reset_profile',['../classcotask_1_1_task.html#a0fd4093dcd01cd1d05ace187956340cf',1,'cotask::Task']]],
+  ['results_8',['Results',['../index.html#ss_results',1,'']]],
+  ['rr_5fsched_9',['rr_sched',['../classcotask_1_1_task_list.html#aa048a6b12954d03b8fbf78dff7ace907',1,'cotask::TaskList']]]
 ];

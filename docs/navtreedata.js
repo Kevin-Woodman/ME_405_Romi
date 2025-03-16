@@ -35,14 +35,17 @@ var NAVTREE =
       [ "IR Reflectance Sensor Array (“Line Sensor”)", "index.html#ss_linesensor", null ],
       [ "IMU", "index.html#ss_imu", null ],
       [ "Bump Sensors", "index.html#ss_bump", null ],
-      [ "Battery Voltage Adjustor", "index.html#ss_battery", null ]
+      [ "Battery Voltage Monitor", "index.html#ss_battery", null ],
+      [ "Servo and Arm", "index.html#ss_servo", null ]
     ] ],
-    [ "Overview", "index.html#ss_overview", [
-      [ "Tasks", "index.html#ss_tasks", null ],
-      [ "Track", "index.html#ss_track", null ]
+    [ "Software", "index.html#ss_software", [
+      [ "Control Theory", "index.html#ss_controlTheory", null ],
+      [ "Game Track Strategy", "index.html#ss_gameTrack", null ],
+      [ "Code Structure", "index.html#ss_codeStruct", null ],
+      [ "Class Documentation", "index.html#ss_doc", null ]
     ] ],
     [ "Results", "index.html#ss_results", [
-      [ "Time Trial", "index.html#ss_timeTrial", null ]
+      [ "Time Trials", "index.html#ss_timeTrials", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

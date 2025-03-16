@@ -170,27 +170,64 @@ Bump Sensors</h2>
 <p>Switch-style bump sensors were used to fulfil the wall-detection requirement of the track, as well as provide the unexpected benefit of an emergency shutoff switch. Originally, Romi featured a set of two, three-switch bump sensors from Pololu, offering protection for the entire front half of Romi. Eventually, the servo displaced the right bump sensor, as it was unnecessary for the requirements of the challenge.</p>
 <p>The bump sensor implementation is perhaps the simplest of the whole design, and only requires each switch be wired to a GPIO port. Each pin is then assigned to the same interrupt callback in the program, as it is not required to determine which of the three switches was activated. The interrupt can contain any functionality needed depending on the section of the track Romi is in.</p>
 <h2><a class="anchor" id="ss_battery"></a>
-Battery Voltage Adjustor</h2>
-<p>Because the motors are effort based instead of voltage based as Romi's batteries drain the motors will behave differently. To account for this Romi contains a voltage divider which is used in conjunction with an ADC pin to measure the current battery voltage. The following code is located in <a class="el" href="main_8py.html">main.py</a> </p><div class="fragment"><div class="line">batPin = ADC(Pin.board.PB0)</div>
-<div class="line">Vbat = batPin.read() * (3.3 / 4095) * (58 / 20) * 1.125</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordflow">if</span> (Vbat &lt;= 6.65):</div>
-<div class="line">    <span class="comment"># If we are low on charge</span></div>
-<div class="line">    print(<span class="stringliteral">&quot;CHARGE BATTERIES&quot;</span>)</div>
-<div class="line">    exit(0)</div>
-</div><!-- fragment --><p>The current voltage is then used to calculate motor effort from the desired velocity. The following code is located in <a class="el" href="_motor_encoder_task_8py.html">MotorEncoderTask.py</a> </p><div class="fragment"><div class="line">self.motor.set_effort(voltage/Vbat * 100)</div>
-</div><!-- fragment --><p> Operating in voltage allows Romi to directly use motor gain for feedforwarding </p><div class="fragment"><div class="line">motorGain = 5.57  <span class="comment"># (rad/s)/V</span></div>
-<div class="line">offset = 2.1  <span class="comment"># Offset to overcome static friction.</span></div>
-<div class="line">self.vel2volt = <span class="keyword">lambda</span> vel: ((vel / motorGain) + offset * (-1 <span class="keywordflow">if</span> vel &lt; 0 <span class="keywordflow">else</span> 1))</div>
-</div><!-- fragment --><h1><a class="anchor" id="ss_overview"></a>
-Overview</h1>
-<h2><a class="anchor" id="ss_tasks"></a>
-Tasks</h2>
+Battery Voltage Monitor</h2>
+<p>Since the software communicates with the motors via the duty cycle percentage of the supplied PWM signal—known in the program as “effort” percentage—the performance of the motor changes based on the voltage level supplied by the batteries. As they depleted, the team noticed large performance deficits, making it nearly impossible to reliably tune the control of the robot.</p>
+<p>To resolve this problem, the voltage level needs to be read by the microcontroller so the maximum battery voltage can be accounted for in the program. Since the logic-level voltage of the microcontroller is 3.3V, the battery voltage had to be stepped down before it could be read by an analog input pin. To achieve this, the team constructed a voltage divider circuit shown by the following schematic.</p>
+<p>TODO [Image battery divider]</p>
+<p>To step down the voltage approximately 3-fold, resistor one must be double the value of resistor two. Resistor one was chosen to be 38K ohms, and resistor two was chosen to be 20K ohms. This steps the voltage down from a maximum of 8.4 volts (1.4V per battery) to approximately 2.9 volts maximum. This signal was read from an analog pin at the start of each run and back calculated to figure out the total battery voltage being supplied to the motors. This allowed the control sequence to determine the proper voltage to supply each motor, which could then be converted into an effort percentage based on the current battery voltage that could be sent via PWM signal to the motor. This concept is illustrated by the following equation.</p>
+<p>TODO [Effort eq]</p>
+<h2><a class="anchor" id="ss_servo"></a>
+Servo and Arm</h2>
+<p>The most unique feature of the team’s Romi was a servo-actuated arm, which allowed for the time-reducing objects to be easily and quickly displaced from their zones without deviating from the line during a run.</p>
+<p>The “arm” utilized four, 14-inch zip ties attached to the servo horn via a custom 3D-printed bracket. Although it is not apparent from the birds-eye image of the game track, the gridded section had a pergola-like structure constructed from 80-20 that required Romi to drive underneath. Zip ties offered a stupid-simple solution: stiff enough to displace the light time-deduction objects, yet flexible enough to bend as Romi drove underneath the structure without disrupting Romi’s motion uncontrollably. The team’s Romi was nicknamed, “Zippy,” accordingly.</p>
+<p>A 20kg positional servo was chosen for the job because it could be accurately positioned via the pulse width of a PWM signal. The specific 20kg servo used was intentionally purchased as its stall-current was below the maximum current allowed through the PDB’s 5V voltage regulator, contrary to other common standard servos. Although the job could’ve likely been accomplished with a micro servo, a standard, high-torque servo was purchased for reuse on other projects with potentially higher demands.</p>
+<p>The servo required the most extensive mechanical design to integrate. To attach it to Romi’s chassis, a 3D-printed bracket was custom designed. A rendered image of the bracket is displayed below.</p>
+<p>TODO [servo img 1]</p>
+<p>Additionally, the custom adapter pictured below was designed to attach the zip ties to the servo horn.</p>
+<p>TODO [servo img 2]</p>
+<p>Below is a rendered image of the assembly attached to Romi.</p>
+<p>TODO [servo render]</p>
+<h1><a class="anchor" id="ss_software"></a>
+Software</h1>
+<p>The software was written in Python using the lightweight framework, MicroPython, which is optimized for microcontrollers and includes runtime and standard libraries useful for simple embedded development in Python.</p>
+<p>The program uses a task scheduler structure to organize and run tasks at prescribed periods efficiently for single-core processing applications. The team utilized a custom library for classes pertinent to the operation of the scheduler. This library was developed by professors at Cal Poly SLO and can be accessed via the links below.</p>
+<p><a href="https://spluttflob.github.io/ME405-Support/index.html%23ss_intro">ME405 Support Library Documentation</a></p>
+<p><a href="https://github.com/spluttflob/ME405-Support">ME405 Support Library GitHub</a></p>
+<h2><a class="anchor" id="ss_controlTheory"></a>
+Control Theory</h2>
+<p>The team opted to implement nested PID controllers to dictate Romi’s motion.</p>
+<p>On the top layer, feedback from either the heading data from the IMU, or line position data from the IR reflectance sensor array is subtracted from a setpoint and processed by a PID controller. The resulting data is added or subtracted from a fixed feed-forward angular velocity specified in the program, yielding a desired angular velocity for each wheel that is subsequently fed to the bottom layer PID controller.</p>
+<p>The bottom layer receives an angular velocity setpoint for a specific wheel and uses feedback from the associated encoder to determine the error between the desired and actual wheel velocity. This error is fed into another PID controller which outputs a voltage that is then combined with the desired velocity which is converted to a voltage prior via the motor characteristic equation formed experimentally by the team.</p>
+<p>Finally, as discussed in the “Voltage Monitor” section, the desired voltage is converted to a duty cycle percentage (effort) based on the current battery voltage, and a PWM signal with the associated effort is applied to the motor.</p>
+<p>A block diagram is shown below to illustrate the control.</p>
+<p>TODO [Block diagram]</p>
+<h2><a class="anchor" id="ss_gameTrack"></a>
+Game Track Strategy</h2>
+<p>Before writing the top-level program and implementing a scheduler to navigate the track, the team thoughtfully inspected the track to develop a strategy for attacking the course. The following image was used to plan out the top-level program.</p>
+<p><img src="Gametrack Diagram.jpg" alt="" width="60%" align="left" class="inline"/> </p><div style="clear: both"></div><p>The team first identified that the track would need to be attacked in sections. On a macro level, control would have to switch between IMU and line sensor feedback. To achieve this, Romi needed to have some element of positional awareness. Originally, the team anticipated using the encoders on each motor to track the total distance Romi travelled by averaging the values of the left and right wheels. While this likely would have provided enough precision over the relatively short track, the team opted for a slightly more complex approach to make the program more reliable and robust. Since the smaller of the two pitch options was chosen for the IR reflectance sensor array, the team noticed that there were detectable differences in total sum of reflectance read by the sensors. This was utilized to detect when the line was thicker than standard, such as at the checkpoints, or when the line was absent, such as in the gridded section. By clever interplay between the encoder data and line detection data, the program was made more robust.</p>
+<p>A task dealing with control switches between IMU and line sensor control based on detection of line changes, but not without knowing which line changes should cause a certain change of state. This is where another task tracking encoder ticks comes in, notifying the control task generally where it is on the track to determine how to handle process line changes. In a symbiotic way, the line sensor task helps the tracker task by using certain line changes to notify the tracker task to reset the encoder count, mitigating error accumulation.</p>
+<p>The list that follows is a more complete explanation of the exact points at which the controller and tracker tasks alert each other.</p>
+<ul>
+<li>Circle 1: The vertex of the diamond is detected by the line sensor. Control is switched to IMU heading and the tracker task resets the encoder tick count.</li>
+<li>Square 1: After a preprogrammed number of encoder ticks, the tracker task alerts the controller task to switch back to line sensor control and ignore all line changes.</li>
+<li>Square 2: After a further amount of encoder ticks, the tracker task alerts the controller task to look out for a thickened line.</li>
+<li>Circle 2: Checkpoint #4 is detected by the line sensor. Control is switched to IMU heading and the tracker task resets the encoder tick count.</li>
+<li>Square 3: After a preprogrammed number of encoder ticks, the tracker task alerts the controller task to change heading setpoint. The bump sensor interrupt is changed to cause a specific heading setpoint change.</li>
+<li>Squares 4 &amp; 5: After a preprogrammed number of encoder ticks, the tracker task alerts the controller task to change heading setpoint.</li>
+<li>Square 6: After a preprogrammed number of encoder ticks, the tracker task restores the program to initialization states, halting motion.</li>
+</ul>
+<h2><a class="anchor" id="ss_codeStruct"></a>
+Code Structure</h2>
+<p>As stated in the section introduction, the main program was structured as a scheduler that runs tasks which are separated into classes. One layer deeper, each task class is structured as a finite state machine (FSM), with each state delegated an internal function within the class. Each task class contains one external generator function called “task(),” which is assigned to the scheduler and merely calls the proper internal function based on state of the FSM.</p>
+<p>The diagram below serves as both a task diagram and class diagram, with some unconventional modifications for clarity.</p>
+<p><img src="FinalTaskDiagram.jpg" alt="" width="50%" align="left" class="inline"/> </p><div style="clear: both"></div><p>In the top portion of each task-class box, the objects with bespoke driver classes that are instantiated and controlled by each task are included. Technically, no Servo driver class was created, however it has been detailed as such to show that the tracker class controls the Servo’s motion and to maintain clarity and consistency.</p>
+<p>In the bottom portion of each task-class box, the functions outlining the FSM are included, as well as the task() function which runs in the scheduler. The controller class features two layers of FSMs, with the _LINE() and _IMU() functions each including their own sense-actuate controller loops, similar to the function of the Motor/Encoder FSM. A potential refactor that could structure the program more cleanly is discussed in the Results section. Individual state machine diagrams for each class have been omitted, as the Game Strategy section serves as a better explanation of how the tasks interact. For code-oriented descriptions of the state machines, please examine the class documentation.</p>
+<p>The priorities and periods of each task have been omitted from the diagram and are instead included in the following table.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Task Name   </th><th class="markdownTableHeadNone">Task Function   </th><th class="markdownTableHeadNone">Task Priority   </th><th class="markdownTableHeadNone">Task Period [us]    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Control   </td><td class="markdownTableBodyNone">Controller.Controller.task   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">10    </td></tr>
+<td class="markdownTableBodyNone">Control   </td><td class="markdownTableBodyNone"><a class="el" href="class_controller_1_1controller.html#aa8b7a9b82fa3324603c34dd2c156921e" title="Defines the task for Controller.">Controller.controller.task</a>   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">10    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Tracker   </td><td class="markdownTableBodyNone"><a class="el" href="class_tracker_1_1_tracker.html#a3bff04c7937a927d0e38feafbaef5b62" title="Defines the task for Controller.">Tracker.Tracker.task</a>   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">20    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -198,18 +235,18 @@ Tasks</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">DriveL   </td><td class="markdownTableBodyNone"><a class="el" href="class_motor_encoder_task_1_1_motor_encoder.html#aeb15e1c948fc972b95dcb391b7631f59" title="Defines the task for MotorEncoder.">MotorEncoderTask.MotorEncoder.task</a>   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">5   </td></tr>
 </table>
-<div class="image">
-<img src="FinalTaskDiagram.jpg" alt="" width="50%"/>
-</div>
-<h2><a class="anchor" id="ss_track"></a>
-Track</h2>
-<div class="image">
-<img src="Gametrack Diagram.jpg" alt="" width="50%"/>
-</div>
- <h1><a class="anchor" id="ss_results"></a>
+<p>Additionally, a table detailing the type and function of each share is included below.</p>
+<p>TODO [Share Table]</p>
+<h2><a class="anchor" id="ss_doc"></a>
+<a href="https://kevin-woodman.github.io/ME_405_Romi/annotated.html">Class Documentation</a></h2>
+<p>The above link details specific documentation for each element of the final program.</p>
+<h1><a class="anchor" id="ss_results"></a>
 Results</h1>
-<h2><a class="anchor" id="ss_timeTrial"></a>
-Time Trial</h2>
+<h2><a class="anchor" id="ss_timeTrials"></a>
+Time Trials</h2>
+<p>Zippy displayed both excellent speed and reliability on the track, scoring full points in the competition and achieving the fastest course completion time, 6.80 seconds, out of all Romi competitors using primarily line-following strategy. Zippy was the only robot to use a servo-actuated arm to displace the time-reduction objects, a strategy that simplified the code structure and saved tremendous time.</p>
+<p>Below is a video of the first official trial, along with a table detailing the results of all three officially sanctioned trials.</p>
+<p>&lt; iframe width="500" height="315" src="https://kevin-woodman.github.io/ME_405_Romi/img/RomiDrive.mov" frameborder="0" allowfullscreen&gt;</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Trial Number   </th><th class="markdownTableHeadNone">Checkpoint 1 [s]   </th><th class="markdownTableHeadNone">Checkpoint 2 [s]   </th><th class="markdownTableHeadNone">Checkpoint 3 [s]   </th><th class="markdownTableHeadNone">Checkpoint 4 [s]   </th><th class="markdownTableHeadNone">Checkpoint 5 [s]   </th><th class="markdownTableHeadNone">Raw Time [s]   </th><th class="markdownTableHeadNone">Number of Cups   </th><th class="markdownTableHeadNone">Final Time [s]    </th></tr>
