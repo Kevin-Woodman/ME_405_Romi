@@ -45,7 +45,8 @@ var NAVTREE =
       [ "Class Documentation", "index.html#ss_doc", null ]
     ] ],
     [ "Results", "index.html#ss_results", [
-      [ "Time Trials", "index.html#ss_timeTrials", null ]
+      [ "Time Trials", "index.html#ss_timeTrials", null ],
+      [ "Reflections", "index.html#ss_reflections", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

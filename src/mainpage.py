@@ -8,13 +8,16 @@
 # discipline, incorporating elements of mechanical design, electrical engineering, computer science, and control theory.
 # Each team was given equal foundation for development: a Romi Chassis Kit equipped with a Motor Driver and Power Distribution
 # Board from Pololu Robotics, and a Nucleo-L476RG development board from ST electronics connected to a custom extension board,
-# the Shoe of Brian.
+# the Shoe of Brian. Below is a rendered image of the standard hardware supplied to each team.
 #
-# [Hardware Render]
+# <img src="RomiRender_Assembly.jpg" width=60% align="left">
+# <div style="clear: both"></div>
 #
 # The game track, shown in a birds-eye view below, provided a diverse array of obstacles for Romi to navigate.
 #
-# \image html "BlankGameTrack.jpg" width=75%
+# <img src="BlankGameTrack.jpg" width=75% align="left">
+# <div style="clear: both"></div>
+#
 # Deliberately, few rules were outlined to allow for creative solutions to the course’s challenges. Romi robots were
 # required to begin within the 2D confines of the grey starting square and contact all checkpoints (denoted by labeled black dots)
 # in numbered order before returning at least their geometric center to within the starting square to complete a time trial.
@@ -27,14 +30,17 @@
 # reflectance sensor array, tactile switch bump sensor, HC-05 Bluetooth module, and 20kg positional servo, in addition
 # to the provided MCU and Motor Driver/PDB development boards.
 #
-# \image html Romi.png width=75%
+# <img src="Romi.png" width=50% align="left">
+# <div style="clear: both"></div>
 #
 # This section serves to break down each hardware component individually and provides a brief description
 # of the purpose and implementation of each.
 #
 # @subsection ss_wiring_diagram Wiring Diagram
 # A comprehensive wiring diagram is provided below for reference throughout the section.
-# \image html "Final Wiring Diagram.jpg" width=50%
+#
+# <img src="Final Wiring Diagram.jpg" width=50% align="left">
+# <div style="clear: both"></div>
 #
 # @subsection ss_nucleo Nucleo MCU Development Board & “Shoe of Brian”
 #
@@ -79,19 +85,27 @@
 #
 # @subsection ss_motor_encoder Motors and Encoders
 #
-# Romi features two plastic gearmotors with a reduction gearing 120:1. The motors have extended backshafts to
-# allow 12 CPR, magnetic quadrature encoders to attach directly. The motors and encoders are attached directly
-# to the PBD as detailed on the Polulu website and are thus omitted from the wiring diagram.
-# The motors were experimentally characterized to calculate their time constant and gain value based
-# on the following equation.
+# Romi features two plastic gearmotors with a reduction gearing 120:1. The motors have extended backshafts to allow
+# 12 CPR, magnetic quadrature encoders to attach directly. The motors and encoders are attached directly to the
+# PBD as detailed on the Polulu website and are thus omitted from the wiring diagram.
 #
-# [EQN]
+# The motors operate via pulse width modulation (PWM), which allowed the team to program different speeds based on
+# the signal’s duty cycle as a percentage and change the direction based on a separate digital input. The motors
+# were experimentally characterized to develop and equation for the steady-state velocity of the wheels at varying
+# input voltage.
 #
-# To achieve this, the team ran Romi at varying input voltages and recorded velocity readings in
-# radians per second. The resulting graphs display import motor characteristics which were used to allow
-# the team to instruct specific motor velocities during the time trials.
+# To achieve this, the team ran Romi at varying input voltages and recorded velocity readings in radians per second.
+# The resulting graph displays important motor characteristics which were used to allow the team to instruct specific
+# motor velocities during the time trials.
 #
-# [GRAPHS]
+# <img src="GainGraph.png" width=50% align="left">
+# <div style="clear: both"></div>
+#
+# The graph above illustrates an approximately linear relationship between supplied voltage and output angular
+# velocity of the wheel when running on the track surface. This graph provided the equation used to convert a
+# desired velocity setpoint to a desired input voltage setpoint in the control sequence, as well as the
+# steady-state gain, Kss, of the motor under frictional and inertial loads associated with driving on the game surface.
+# Also, this graph provided important information about the threshold voltage required to overcome static friction.
 #
 # @subsection ss_linesensor  IR Reflectance Sensor Array (“Line Sensor”)
 # Line detection was one of the primary ways to navigate the track quickly. For that, the team opted to use an array
@@ -113,8 +127,10 @@
 # To retrieve a line position reading from the sensor, the equation to calculate the x-position of a 2D shape’s
 # centroid was adopted to an array of line sensor readings and their corresponding positions.
 #
-# \image html Sumval.png width=30%
-# \image html centroid.png width=40%
+# <img src="Sumval.png" width=30% align="left">
+# <div style="clear: both"></div>
+# <img src="centroid.png" width=40% align="left">
+# <div style="clear: both"></div>
 #
 # Via this equation, the team was able to achieve a reading for the line position relative to the sensor position.
 # This was subtracted from the middle position, sensor 7, to receive a difference used to control Romi.
@@ -162,9 +178,10 @@
 # had to be stepped down before it could be read by an analog input pin. To achieve this, the team constructed a voltage divider
 # circuit shown by the following schematic.
 #
-# TODO [Image battery divider]
+# <img src="Voltage Divider.png" width=20% align="left">
+# <div style="clear: both"></div>
 #
-#To step down the voltage approximately 3-fold, resistor one must be double the value of resistor two. Resistor one
+# To step down the voltage approximately 3-fold, resistor one must be double the value of resistor two. Resistor one
 # was chosen to be 38K ohms, and resistor two was chosen to be 20K ohms. This steps the voltage down from a maximum of
 # 8.4 volts (1.4V per battery) to approximately 2.9 volts maximum. This signal was read from an analog pin at the start of
 # each run and back calculated to figure out the total battery voltage being supplied to the motors. This allowed the
@@ -172,7 +189,8 @@
 # percentage based on the current battery voltage that could be sent via PWM signal to the motor. This concept is
 # illustrated by the following equation.
 #
-# TODO [Effort eq]
+# <img src="EffortCalc.png" width=30% align="left">
+# <div style="clear: both"></div>
 #
 # @subsection ss_servo Servo and Arm
 #
@@ -194,15 +212,18 @@
 # The servo required the most extensive mechanical design to integrate. To attach it to Romi’s chassis, a 3D-printed
 # bracket was custom designed. A rendered image of the bracket is displayed below.
 #
-# TODO [servo img 1]
+# <img src="RomiRender_Adapter.jpg" width=30% align="left">
+# <div style="clear: both"></div>
 #
 # Additionally, the custom adapter pictured below was designed to attach the zip ties to the servo horn.
 #
-# TODO [servo img 2]
+# <img src="RomiRender_Bracket.jpg" width=30% align="left">
+# <div style="clear: both"></div>
 #
 # Below is a rendered image of the assembly attached to Romi.
 #
-# TODO [servo render]
+# <img src="RomiRender_AssemblywServo.jpg" width=40% align="left">
+# <div style="clear: both"></div>
 #
 # @section ss_software Software
 # The software was written in Python using the lightweight framework, MicroPython, which is optimized for microcontrollers
@@ -235,7 +256,8 @@
 #
 # A block diagram is shown below to illustrate the control.
 #
-# TODO [Block diagram]
+# <img src="BlockDiagram.png" width=80% align="left">
+# <div style="clear: both"></div>
 #
 # @subsection ss_gameTrack Game Track Strategy
 #
@@ -314,8 +336,20 @@
 #
 # Additionally, a table detailing the type and function of each share is included below.
 #
-# TODO [Share Table]
+# Share Name  | Share Type | Tasks |Share Description
+# ------------- | ------------- | ------------- | -------------
+# enabled | Unsigned Byte | Control, Tracker | Used to enable or disabled the higher level tasks. "Intercepted" to read bump sensors
+# sectionShare | Signed Byte | Control, Tracker | Used to communicate events (encoder count reached, line thickness found) between the Controller and Tracker
+# velocityR | float | Control, DriveR | Used to communicate right wheel velocity
+# posR | Unsigned Long | Tracker, DriveR | Used to communicate right encoder position
+# encoderResetR | Unsigned Byte | Tracker, DriveR | Used to zero the right encoder
+# velocityL | float | Control, DriveL | Used to communicate left wheel velocity
+# posL | Unsigned Long | Tracker, DriveL | Used to communicate left encoder position
+# encoderResetL | Unsigned Byte | Tracker, DriveL | Used to zero the left encoder
 #
+#
+# The position shares would have been better fitted as signed longs, but as encoder tick counting was added late
+# in development this is not caught before time trials.
 # @subsection ss_doc <a href="https://kevin-woodman.github.io/ME_405_Romi/annotated.html">Class Documentation</a>
 # The above link details specific documentation for each element of the final program.
 #
@@ -330,10 +364,45 @@
 # Below is a video of the first official trial, along with a table detailing the results of all three officially
 # sanctioned trials.
 #
-# < iframe width="500" height="315" src="https://kevin-woodman.github.io/ME_405_Romi/img/RomiDrive.mov" frameborder="0" allowfullscreen>
+# \htmlonly
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/j1FZ3Kwvggg?si=Y55d8cYlo9iVMv1Y"
+# title="YouTube video player" frameborder="0" allow="accelerometer;
+# clipboard-write; encrypted-media; gyroscope; picture-in-picture;
+# web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+# \endhtmlonly
 #
 # Trial Number | Checkpoint 1 [s] | Checkpoint 2  [s] | Checkpoint 3 [s] | Checkpoint 4 [s] | Checkpoint 5 [s] | Raw Time [s] | Number of Cups | Final Time [s]
 # ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 # 1 | 3.06 | 6.03 | 9.20 | 10.83 | 13.07 | 16.90 | 2 | 6.90
 # 2 | 3.07 | 6.03 | 9.17 | 10.93 | 13.13 | 16.80 | 2 | 6.80
 # 3 | 3.10 | 6.17 | 9.27 | 10.90 | 13.17 | 16.80 | 2 | 6.80
+#
+# @subsection ss_reflections Reflections
+#
+# The team gained tremendous experience with all four elements of Mechatronics, and implementing each
+# in a collaborative way to ensure excellent performance. The team is particularly proud of the creativity and rapid
+# prototyping used to develop a simple and effective mechanism to displace the time-deduction objects, as well as
+# the strategic interplay between sensor data to ensure a highly consistent result. The voltage monitor circuit is
+# also a point of success, and allowed the team to tune Zippy’s nested PID controllers and rely on consistent behavior
+# regardless of battery level.
+#
+# The primary successes of the project sprouted from the core difficulties the team faced throughout development.
+# Chiefly, converting control theory into executable code in Python was difficult to conceptualize at times, and
+# resulted in the team having to do a major refactoring of the code to ensure that the project could be cleanly
+# documented; a challenge in its own right.
+#
+# On the hardware side, although the Servo was very simple to implement, the original position on the rear caused the
+# zip ties to catch the pergola above the gridded section when making the turn to exit the section. Additionally,
+# the removal of the second time-deduction object was inconsistent. Although the team originally decided to tackle
+# the section backwards, the compounding issues caused by the rear positioned prompted the team to reposition the
+# servo to the front of Zippy. This was met with challenges as well, as Zippy was then front-heavy and required
+# counterweight on the rear to stop the integrated front suspension from “bucking” on acceleration.
+#
+# If the team were to have more time in Romi’s development, the weight distribution would be properly equalized,
+# perhaps by using a micro servo rather than the far heavier, metal-geared servo. More time could be dedicated to
+# making the wiring cleaner, although the team did not encounter difficulties due to this. The team also sees room for
+# improvement in the code structure. By splitting up the Controller task into two separate tasks for the IMU and line
+# sensor control, the structure would be more consistent. This also would allow a more straightforward implementation
+# path for varying the speed and PID control based on the section of the track, rather than only having two different
+# speeds associated with IMU and line sensing control respectively. These changes combined have the potential to
+# greatly improve on the already fast and consistent performance of Zippy.

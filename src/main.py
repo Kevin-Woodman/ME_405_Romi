@@ -43,8 +43,8 @@ if __name__ == '__main__':
     tracker = Tracker()
 
     enabled = task_share.Share('B', thread_protect=False, name="enabled")
-    effortL = task_share.Share('f', thread_protect=False, name="effortL")
-    effortR = task_share.Share('f', thread_protect=False, name="effortR")
+    velocityL = task_share.Share('f', thread_protect=False, name="velocityL")
+    velocityR = task_share.Share('f', thread_protect=False, name="velocityR")
 
     posL = task_share.Share('L', thread_protect=False, name="posL")
     posR = task_share.Share('L', thread_protect=False, name="posR")
@@ -55,11 +55,11 @@ if __name__ == '__main__':
     encoderResetR =  task_share.Share('B', thread_protect=False, name="resetR")
 
     # User_task = cotask.Task(User, name="User", priority=1, period=100, profile=True, trace=False, shares=(enabled))
-    Control_task = cotask.Task(controller.task, name="Control", priority=2, period=10, profile=True, trace=False, shares=(enabled, effortL, effortR, sectionShare))
+    Control_task = cotask.Task(controller.task, name="Control", priority=2, period=10, profile=True, trace=False, shares=(enabled, velocityL, velocityR, sectionShare))
 
-    MotorR_task = cotask.Task(motorR.task, name="DriveR", priority=3, period=5, profile=True, trace=False, shares=(effortR, posR, encoderResetR))
+    MotorR_task = cotask.Task(motorR.task, name="DriveR", priority=3, period=5, profile=True, trace=False, shares=(velocityR, posR, encoderResetR))
 
-    MotorL_task = cotask.Task(motorL.task, name="DriveL", priority=3, period=5, profile=True, trace=False, shares=(effortL, posL, encoderResetL))
+    MotorL_task = cotask.Task(motorL.task, name="DriveL", priority=3, period=5, profile=True, trace=False, shares=(velocityL, posL, encoderResetL))
 
     Tracker_task = cotask.Task(tracker.task, name="Tracker", priority=1, period = 20, shares= (enabled, sectionShare, posL, posR, encoderResetL, encoderResetR))
 
